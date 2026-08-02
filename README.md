@@ -2,18 +2,10 @@
 
 Source for [alistermunday.com](https://alistermunday.com).
 
-## What this is
+## What this is (as of 2 Aug 2026)
 
-A personal notebook. Refresh the tab instead of scrolling back through old
-chats. Built for one reader — me. Not written to inform or educate anyone
-else; if someone else stumbles on it and finds something useful, fine, but
-that's not who it's for.
+A future dedicated site for "Difficult Truths." Not built yet — currently just
+a placeholder. Deliberately NOT a mirror of the personal notebook (that lives
+local-only, never published — see `webpages/` in the main workspace).
 
-Plain static HTML/CSS, no build step, no Jekyll (see `.nojekyll`).
-`index.html` is the hub; every new page gets a card there.
-
-## Adding a page
-
-1. Write the `.html` file at repo root.
-2. Add a card for it in `index.html`.
-3. Commit, push. GitHub Pages serves it as-is (no build step).
+Plain static HTML, no build step, no Jekyll (see `.nojekyll`).
