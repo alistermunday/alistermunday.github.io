@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>The Tic Tac — Falsification</title>
+<!-- PAGE-META emoji="🛸" title="The Tic Tac" blurb="USS Nimitz, 2004 — four witnesses, every mundane explanation ruled out. What's left standing." -->
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+  body {
+    background: #040a06;
+    color: #7fffa0;
+    font-family: 'Share Tech Mono', 'Courier New', monospace;
+    margin: 0;
+    padding: 0 20px 70px;
+    background-image:
+      repeating-linear-gradient(0deg, rgba(127,255,160,0.025) 0px, rgba(127,255,160,0.025) 1px, transparent 1px, transparent 3px);
+  }
+  .site-nav { max-width: 820px; margin: 0 auto; font-size: 0.85em; padding-top: 20px; }
+  .site-nav a { color: #4a9e63; text-decoration: none; }
+  .site-nav a:hover { color: #7fffa0; }
+
+  .hud {
+    max-width: 820px;
+    margin: 30px auto 10px;
+    border: 1px solid #1f5c33;
+    padding: 24px 26px;
+    position: relative;
+    box-shadow: 0 0 24px rgba(127,255,160,0.06) inset;
+  }
+  .hud::before, .hud::after {
+    content: "";
+    position: absolute;
+    width: 14px; height: 14px;
+    border: 2px solid #7fffa0;
+  }
+  .hud::before { top: -2px; left: -2px; border-right: none; border-bottom: none; }
+  .hud::after  { bottom: -2px; right: -2px; border-left: none; border-top: none; }
+
+  h1 { font-size: 1.9em; letter-spacing: 3px; margin: 0 0 4px; color: #a8ffc0; text-transform: uppercase; }
+  .meta-line { color: #4a9e63; font-size: 0.85em; letter-spacing: 1px; margin-bottom: 18px; }
+  .verdict-badge {
+    display: inline-block;
+    border: 1px solid #ffcc33;
+    color: #ffcc33;
+    padding: 3px 10px;
+    font-size: 0.8em;
+    letter-spacing: 2px;
+    margin-bottom: 16px;
+  }
+  h2 {
+    color: #a8ffc0;
+    letter-spacing: 2px;
+    font-size: 1.05em;
+    text-transform: uppercase;
+    border-bottom: 1px dashed #1f5c33;
+    padding-bottom: 6px;
+    margin-top: 42px;
+  }
+  .container { max-width: 820px; margin: 0 auto; line-height: 1.6; }
+  a { color: #7fffa0; }
+  .core-list { list-style: none; padding-left: 0; }
+  .core-list li { padding: 4px 0 4px 22px; position: relative; }
+  .core-list li::before { content: "▸"; position: absolute; left: 0; color: #4a9e63; }
+
+  table { width: 100%; border-collapse: collapse; margin: 16px 0 8px; font-size: 0.92em; }
+  th, td { border: 1px solid #1f5c33; padding: 8px 10px; text-align: left; vertical-align: top; }
+  th { color: #a8ffc0; text-transform: uppercase; font-size: 0.8em; letter-spacing: 1px; }
+  .ruled-out { color: #d16a5a; text-decoration: line-through; font-weight: bold; }
+  .survives { color: #7fffa0; font-weight: bold; }
+  .tier-tag { color: #4a9e63; font-style: italic; font-size: 0.85em; }
+
+  .method-box {
+    background: #08120b;
+    border-left: 3px solid #4a9e63;
+    padding: 14px 18px;
+    font-size: 0.92em;
+    color: #b8e6c4;
+    margin: 16px 0;
+  }
+  .sources { font-size: 0.85em; color: #6bbf87; line-height: 1.8; }
+  footer { text-align: center; margin-top: 60px; color: #315c3f; font-size: 0.8em; letter-spacing: 1px; }
+</style>
+</head>
+<body>
+<!-- NAV:START -->
+<nav class="site-nav"><a href="index.html">← home</a></nav>
+<!-- NAV:END -->
+
+<div class="hud">
+  <h1>The Tic Tac</h1>
+  <div class="meta-line">NIMITZ ENCOUNTER (FRAVOR / DIETRICH) · 14 NOV 2004 · PACIFIC OCEAN, ~100MI SW SAN DIEGO</div>
+  <div class="verdict-badge">VERDICT: UNRESOLVED</div>
+  <p>Four Navy pilots visually observed an object with no wings, no exhaust, no propulsion. All
+  agree it departed at a speed beyond anything they could follow. Mundane hypotheses cannot
+  account for the irreducible core testimony.</p>
+</div>
+
+<div class="container">
+
+  <div class="method-box">
+    <strong>The method: falsification, not confirmation.</strong> For each hypothesis, ask one
+    question — can the available evidence rule it out? If yes, it's dead. If no, it survives —
+    whether mundane or extraordinary. Surviving hypotheses are not ranked against each other; no
+    priors, no probabilities, no ideology. Three tiers of falsification, strongest to weakest:
+    <strong>decisive</strong> (instrument data / physics contradicts it outright), <strong>testimonial</strong>
+    (incompatible with consistent multi-witness testimony, conditional on that testimony being
+    accurate), <strong>plausibility</strong> (not impossible, just strained past the point of a good
+    explanation).
+  </div>
+
+  <h2>What Was Observed</h2>
+  <p>Two F/A-18F Super Hornets (four crew total) were diverted from a training exercise by the
+  USS Princeton to investigate a radar contact. In clear daylight over calm seas, all four crew
+  observed a disturbance in the water below, and a white, oblong, wingless, propulsion-less
+  object roughly 30–40 feet long above it. Commander David Fravor descended to engage. The
+  object departed at extreme speed, vanishing from close visual range in under a second. No
+  exhaust trail. No sonic boom.</p>
+  <p>A second flight with an ATFLIR pod launched about an hour later. Lt. Cmdr. Chad Underwood
+  recorded the FLIR1 infrared video — it shows the oblong object, but not the extraordinary
+  departure the first crew described. Fravor's own jet didn't carry an ATFLIR pod, so the most
+  extraordinary moment of the whole encounter was never on camera.</p>
+
+  <h2>Irreducible Core — What All Four Agree On</h2>
+  <ul class="core-list">
+    <li>Diverted by Princeton to investigate a real radar contact</li>
+    <li>Calm, clear day, excellent visibility</li>
+    <li>A disturbance in the water on an otherwise calm sea</li>
+    <li>White, oblong object, ~30–40ft, no wings, no markings, no exhaust</li>
+    <li>Fravor descended; Dietrich stayed high as overwatch</li>
+    <li>Object departed at extreme speed — "shot out of a rifle"</li>
+    <li>Written debriefs completed within hours of landing</li>
+  </ul>
+
+  <h2>Where Witnesses Diverge</h2>
+  <p><strong>Duration:</strong> Fravor says ~5 minutes of visual contact; Dietrich says 8–10
+  seconds. Unclarified.<br>
+  <strong>Whitewater shape:</strong> Fravor describes a cross-shape; Dietrich a cylindrical
+  shape.<br>
+  <strong>Behaviour before departure:</strong> Fravor describes hovering and interactive
+  mirroring of his descent; Dietrich's language is more ambiguous, elsewhere describing straight-line
+  motion at 300–500 knots.<br>
+  <strong>Speed before departure:</strong> Fravor's own WSO reported the object "traveling level
+  at 500 knots" in the executive summary — inconsistent with Fravor's account of near-stationary
+  hovering.</p>
+
+  <h2>Hypotheses Tested</h2>
+  <table>
+    <tr><th>Hypothesis</th><th>Status</th><th>Reasoning</th></tr>
+    <tr>
+      <td>Balloon</td>
+      <td class="ruled-out">Ruled out</td>
+      <td><span class="tier-tag">Testimonial.</span> Accounts for hovering and lack of propulsion,
+      not the departure. A balloon cannot go from near-stationary to invisible-at-half-a-mile in
+      under a second. All four witnesses agree on the extreme-speed departure.</td>
+    </tr>
+    <tr>
+      <td>Cruise missile</td>
+      <td class="ruled-out">Ruled out</td>
+      <td><span class="tier-tag">Testimonial.</span> Accounts for rapid departure and shape, not
+      the hovering above whitewater. Missiles leave visible exhaust; none was seen. Dietrich —
+      who has seen thousands of missiles — was shown missile footage and immediately
+      distinguished it from what she saw. No launch was logged.</td>
+    </tr>
+    <tr>
+      <td>Conventional drone (2004-era)</td>
+      <td class="ruled-out">Ruled out</td>
+      <td><span class="tier-tag">Testimonial.</span> No 2004-era drone matches the size, shape,
+      flight characteristics, or departure speed described. No wings or rotors observed at close
+      range in daylight.</td>
+    </tr>
+    <tr>
+      <td>Advanced classified US craft</td>
+      <td class="survives">Survives</td>
+      <td>Can't be ruled out in principle — but requires a programme producing technology far
+      beyond publicly known physics, keeping perfect secrecy for 20+ years, and being tested
+      without coordination near an active carrier strike group. Plausible, but with its own
+      extraordinary assumptions.</td>
+    </tr>
+    <tr>
+      <td>Sensor malfunction / misperception</td>
+      <td class="ruled-out">Ruled out</td>
+      <td><span class="tier-tag">Testimonial.</span> Four crew in two aircraft made visual contact
+      in daylight — not a single-sensor event.</td>
+    </tr>
+    <tr>
+      <td>Fabrication</td>
+      <td class="ruled-out">Ruled out</td>
+      <td><span class="tier-tag">Plausibility.</span> Four career officers — including Dietrich,
+      who actively resists the extraordinary framing — held consistent core testimony for 20
+      years, including under oath before Congress. Dietrich waited 17 years to come forward and
+      calls the experience absurd. Not the profile of coordinated fabrication.</td>
+    </tr>
+    <tr>
+      <td>Anomalous / unknown physics</td>
+      <td class="survives">Survives</td>
+      <td>The irreducible core — a physical object, seen by four people in daylight, going from
+      near-stationary to beyond visual range in under a second with no propulsion or sonic boom —
+      isn't explained by any known technology or natural phenomenon.</td>
+    </tr>
+  </table>
+
+  <h2>Evidence Tiers</h2>
+  <p><strong>Strongest</strong> (direct visual, multi-witness): object appearance, whitewater,
+  departure speed — four witnesses, daylight, clear conditions.<br>
+  <strong>Weaker</strong> (single-witness testimony about instruments): the claim the object
+  reappeared on radar 60 miles away seconds after departing rests mainly on radar operator Kevin
+  Day's account. Day has shown detail drift elsewhere (a "barrel roll" Fravor denies). The actual
+  radar data no longer exists. Fravor only heard about the reappearance by radio.<br>
+  <strong>Weakest</strong> (disputed between witnesses): duration, the "mirroring" behaviour, the
+  exact whitewater shape — differ between Fravor and Dietrich, can't be independently verified.</p>
+
+  <h2>What Would Change This</h2>
+  <p><strong>To resolve mundane:</strong> public testimony from the two WSOs contradicting the
+  departure account; identification of a specific test programme in the area that day; evidence
+  all four accounts trace back to one contaminated source.<br>
+  <strong>To resolve as confirmed anomalous:</strong> the original Princeton radar data; ATFLIR or
+  other footage of the departure itself; physical trace evidence; independent corroboration of
+  the radar reappearance from a second named source.</p>
+
+  <h2>Current Status</h2>
+  <p>The irreducible core eyewitness testimony survives every mundane hypothesis tested. The
+  strongest corroborating evidence — the original radar data — no longer exists. The case rests
+  on human testimony, which is the strongest evidence available for an event like this, but it
+  is not instrument data. Two hypotheses remain standing: an unacknowledged classified craft, or
+  something genuinely unexplained.</p>
+
+  <h2>Primary Sources</h2>
+  <p class="sources">
+    <a href="https://www.navair.navy.mil/foia/documents" target="_blank">FLIR1 video (DoD release)</a><br>
+    <a href="https://oversight.house.gov/wp-content/uploads/2023/07/David-Fravor-Statement-for-House-Oversight-Committee.pdf" target="_blank">Fravor congressional testimony (2023)</a><br>
+    <a href="https://www.cbsnews.com/news/navy-ufo-sighting-60-minutes-2021-05-16/" target="_blank">Dietrich, 60 Minutes interview (2021)</a><br>
+    <a href="https://www.dailygrail.com/2021/06/tic-tac-tactics-pilot-discusses-the-u-s-militarys-engagement-with-a-ufo-in-2004/" target="_blank">Dietrich–Mick West video discussion</a><br>
+    <a href="https://www.metabunk.org/threads/nimitz-tic-tac-fravor-dietrich-encounter-missile-hypothesis.11838/" target="_blank">Metabunk missile hypothesis thread</a>
+  </p>
+
+  <footer>same test, every case — no advocacy, no debunking</footer>
+</div>
+</body>
+</html>
