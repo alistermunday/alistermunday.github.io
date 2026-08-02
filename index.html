@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Home</title>
+<style>
+  body {
+    background: #12100c;
+    color: #eae0c8;
+    font-family: -apple-system, Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 60px 20px;
+  }
+  .wrap { max-width: 720px; margin: 0 auto; }
+  h1 {
+    font-size: 2.2em;
+    letter-spacing: 2px;
+    margin-bottom: 4px;
+  }
+  .sub { color: #8a8064; margin-bottom: 40px; }
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+  }
+  a.card {
+    display: block;
+    background: #1c1812;
+    border: 1px solid #332c1e;
+    border-radius: 10px;
+    padding: 22px;
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.15s, transform 0.15s;
+  }
+  a.card:hover {
+    border-color: #c9a227;
+    transform: translateY(-2px);
+  }
+  .card .emoji { font-size: 2em; }
+  .card h2 { margin: 10px 0 4px; font-size: 1.15em; color: #f4d97e; }
+  .card p { margin: 0; font-size: 0.9em; color: #a8987a; line-height: 1.4; }
+  .placeholder {
+    border-style: dashed;
+    opacity: 0.5;
+  }
+  .placeholder:hover { transform: none; border-color: #332c1e; }
+  footer { margin-top: 50px; color: #5a5140; font-size: 0.85em; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>webpages/</h1>
+  <div class="sub">refresh instead of scroll — pages live here, not in chat</div>
+
+  <div class="grid">
+    <a class="card" href="queen.html">
+      <div class="emoji">👑</div>
+      <h2>Queen</h2>
+      <p>A homage — the band, the Red Special, Live Aid, the playlist.</p>
+    </a>
+    <a class="card" href="banana.html">
+      <div class="emoji">🍌</div>
+      <h2>Banana Recipes</h2>
+      <p>Cooked, not raw — six simple ways with one ripe banana.</p>
+    </a>
+    <div class="card placeholder">
+      <div class="emoji">＋</div>
+      <h2>Next page</h2>
+      <p>Whatever we build next shows up here automatically once linked.</p>
+    </div>
+  </div>
+
+  <footer>index.html — add a card here each time we make a new page</footer>
+</div>
+</body>
+</html>
