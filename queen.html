@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Queen — A Kind of Magic</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;900&family=EB+Garamond:ital@0;1&display=swap');
+
+  body {
+    background: #0a0a0a;
+    color: #eae0c8;
+    font-family: 'EB Garamond', Georgia, serif;
+    margin: 0;
+    padding: 0 20px 60px;
+  }
+  .crest {
+    text-align: center;
+    padding: 60px 0 20px;
+  }
+  h1 {
+    font-family: 'Cinzel', serif;
+    font-weight: 900;
+    font-size: 3.2em;
+    letter-spacing: 6px;
+    margin: 0;
+    background: linear-gradient(90deg, #c9a227 0%, #f4d97e 25%, #fff6d8 50%, #f4d97e 75%, #c9a227 100%);
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 2px 12px rgba(201,162,39,0.3);
+    animation: shimmer 6s linear infinite;
+  }
+  @keyframes shimmer {
+    0%   { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+  .subtitle {
+    font-style: italic;
+    color: #a8987a;
+    letter-spacing: 2px;
+    margin-top: 6px;
+  }
+  hr.gold {
+    border: none;
+    height: 2px;
+    width: 200px;
+    margin: 30px auto;
+    background: linear-gradient(90deg, transparent, #c9a227, transparent);
+  }
+  .container { max-width: 760px; margin: 0 auto; }
+  h2 {
+    font-family: 'Cinzel', serif;
+    color: #c9a227;
+    letter-spacing: 2px;
+    font-size: 1.3em;
+    border-bottom: 1px solid #3a3222;
+    padding-bottom: 8px;
+    margin-top: 50px;
+  }
+  .members {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 18px;
+    margin-top: 20px;
+  }
+  .member {
+    background: #141210;
+    border: 1px solid #2a2418;
+    border-radius: 6px;
+    padding: 16px 18px;
+  }
+  .member .name {
+    color: #f4d97e;
+    font-weight: bold;
+    font-size: 1.1em;
+  }
+  .member .role {
+    color: #a8987a;
+    font-style: italic;
+    font-size: 0.9em;
+    margin: 2px 0 8px;
+  }
+  .member .facts {
+    font-size: 0.82em;
+    color: #7a7058;
+    margin: 6px 0 10px;
+    padding-top: 8px;
+    border-top: 1px dashed #2a2418;
+  }
+  .member .facts b { color: #c9a227; }
+  .member p { line-height: 1.55; }
+  .member p + p { margin-top: 10px; }
+  .era {
+    margin: 14px 0;
+    padding-left: 16px;
+    border-left: 3px solid #3a3222;
+  }
+  .era .year { color: #c9a227; font-weight: bold; }
+  .quote {
+    font-style: italic;
+    text-align: center;
+    color: #d8caa4;
+    font-size: 1.3em;
+    margin: 40px auto;
+    max-width: 600px;
+    line-height: 1.5;
+  }
+  .quote span {
+    display: block;
+    font-size: 0.7em;
+    color: #a8987a;
+    margin-top: 8px;
+  }
+  footer {
+    text-align: center;
+    margin-top: 70px;
+    color: #5a5140;
+    font-size: 0.85em;
+    letter-spacing: 1px;
+  }
+  .guitar-section {
+    background: #141210;
+    border: 1px solid #2a2418;
+    border-radius: 8px;
+    padding: 22px 26px;
+    margin-top: 20px;
+  }
+  .guitar-section img {
+    width: 100%;
+    max-width: 420px;
+    display: block;
+    margin: 14px auto 6px;
+    border-radius: 6px;
+    border: 1px solid #3a3222;
+  }
+  .img-caption {
+    text-align: center;
+    font-size: 0.8em;
+    color: #7a7058;
+    margin-bottom: 18px;
+    font-style: italic;
+  }
+  .spec-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 20px;
+    margin: 16px 0;
+    font-size: 0.92em;
+  }
+  .spec-grid .label { color: #c9a227; }
+  .guitar-section h3 {
+    color: #f4d97e;
+    font-size: 1em;
+    margin-top: 22px;
+    margin-bottom: 6px;
+    letter-spacing: 1px;
+  }
+</style>
+</head>
+<body>
+
+<div class="crest">
+  <h1>QUEEN</h1>
+  <div class="subtitle">1970 — forever</div>
+</div>
+<hr class="gold">
+
+<div class="container">
+
+  <p style="text-align:center; font-size:1.1em; color:#d8caa4;">
+    Four musicians who refused to sound like anyone else — opera, glam, rock, disco, funk,
+    all stitched together with total confidence and zero shame. No genre ever held them for
+    more than one album.
+  </p>
+
+  <h2>The Four</h2>
+  <div class="members">
+
+    <div class="member">
+      <div class="name">Freddie Mercury</div>
+      <div class="role">Vocals, piano, showman-in-chief</div>
+      <div class="facts"><b>Born</b> Farrokh Bulsara, 5 Sept 1946, Stone Town, Zanzibar —
+      Parsi-Indian family, sent to boarding school in India where he trained classically on
+      piano and formed his first band. <b>Died</b> 24 Nov 1991.</div>
+      <p>The voice everyone remembers, but he was also the band's visual identity — he studied
+      graphic design at Ealing Art College and designed Queen's crest himself: the zodiac signs
+      of all four members (two lions for Leo, a crab for Cancer, two fairies for Virgo) woven
+      around a phoenix, with a Q for a crown. Four-octave range, and famously refused to have
+      his prominent front teeth fixed his whole life, convinced it was part of what gave his
+      voice its resonance.</p>
+      <p>The contradiction people who knew him always mention: the strutting, command-72,000-people
+      persona was almost entirely a stage creation. Offstage he was shy, read voraciously, and
+      was known among friends as generous to the point of secrecy about it. Wrote "Bohemian
+      Rhapsody," "Killer Queen," "Somebody to Love," "Don't Stop Me Now," "Crazy Little Thing
+      Called Love" — a songwriting range from mock-opera to rockabilly pastiche that no one else
+      in the band came close to matching. Kept recording vocals for what became "Made in Heaven"
+      right up until his voice gave out, knowing he was dying.</p>
+    </div>
+
+    <div class="member">
+      <div class="name">Brian May</div>
+      <div class="role">Guitar</div>
+      <div class="facts"><b>Born</b> 19 July 1947, Hampton, Middlesex. <b>Also:</b> Dr. Brian
+      May — PhD in astrophysics, Imperial College London.</div>
+      <p>Started a physics degree, then a PhD on interplanetary dust and the zodiacal light —
+      paused it in 1974 when Queen took off, and quietly went back and finished it in 2007,
+      more than three decades later. Before Queen he and Roger Taylor were in a band called
+      Smile; when their singer left, a friend of a friend named Freddie joined and told them to
+      change the name. Built his own guitar, the Red Special, out of a fireplace mantel and
+      bicycle parts — full story further down.</p>
+      <p>The quiet one of the loud sounds: soft-spoken, professorial in interviews, and the
+      guitarist behind some of the most aggressive tones in classic rock. Long-running animal
+      welfare campaigner — co-founded the Save Me Trust, campaigned hard against fox hunting and
+      the UK badger cull. There's an asteroid named after him, 52665 Brianmay, and he played a
+      guitar solo live from the roof of Buckingham Palace for the Queen's Golden Jubilee in 2002.</p>
+    </div>
+
+    <div class="member">
+      <div class="name">Roger Taylor</div>
+      <div class="role">Drums, high harmonies</div>
+      <div class="facts"><b>Born</b> Roger Meddows Taylor, 26 July 1949, Dartford (raised in
+      Norfolk/Cornwall).</div>
+      <p>Started a dentistry course, switched to a biology degree, finished neither — music won.
+      That scream in "Bohemian Rhapsody" is his; so is most of the piercing high harmony stack
+      that makes Queen's choruses sound like a cathedral choir rather than a rock band. The
+      drummer stereotype (just keeps time, doesn't write) never applied to him: "Radio Ga Ga,"
+      "A Kind of Magic," and co-writes on "Innuendo" and "The Show Must Go On" are all his.</p>
+      <p>Reputation as the band's sharpest wit in interviews — dry, cheeky, least precious about
+      the band's legacy of the three survivors. Ran a parallel side project, The Cross, through
+      the early 90s, and kept a solo career going the whole time. Still tours today as Queen +
+      Adam Lambert.</p>
+    </div>
+
+    <div class="member">
+      <div class="name">John Deacon</div>
+      <div class="role">Bass</div>
+      <div class="facts"><b>Born</b> 19 August 1951, Leicester. <b>Last to join</b> — 1971,
+      after answering a notice-board audition call.</div>
+      <p>Studied electronics at Chelsea College and put it to direct use: built his own amplifier
+      from scavenged parts — the "Deacy Amp" — which shows up all over Queen's records for its
+      particular warm, saturated tone, including Brian May's multi-tracked "orchestral" guitar
+      passages. Self-taught on bass, and quietly responsible for some of the band's biggest
+      commercial peaks: "Another One Bites the Dust" (a bassline he wrote after getting into
+      Chic — became Queen's best-selling US single), "I Want to Break Free," "You're My Best
+      Friend."</p>
+      <p>By far the most private of the four. Played on 1997's "No-One But You" tribute after
+      Freddie's death, then stepped back from music and public life almost entirely — no
+      interviews, no reunion performances, essentially no public appearances since. Of the three
+      surviving members, he's the one nobody has a recent photo of.</p>
+    </div>
+
+  </div>
+
+  <div class="guitar-section">
+    <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Queen_News_Of_The_World_(1977_Press_Kit_Photo_01).jpg" alt="Queen — Freddie Mercury, Brian May, Roger Taylor, John Deacon — 1977 press kit photo">
+    <div class="img-caption">All four, 1977 — the official News of the World press kit. (Wikimedia Commons)</div>
+
+    <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Queen_News_Of_The_World_(1977_Press_Kit_Photo_02).jpg" alt="Queen group photo, 1977 press kit, alternate shot">
+    <div class="img-caption">Same press kit, alternate shot. (Wikimedia Commons)</div>
+
+    <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Queen_A_Night_At_The_Opera_(1975_Elektra_publicity_photo_02).jpg" alt="Queen, 1975 Elektra publicity photo for A Night at the Opera">
+    <div class="img-caption">1975 — Elektra publicity shot for A Night at the Opera. (Wikimedia Commons)</div>
+
+    <img src="https://commons.wikimedia.org/wiki/Special:FilePath/QueenPerforming1977.jpg" alt="Queen performing live, 1977">
+    <div class="img-caption">Live, 1977. (Wikimedia Commons)</div>
+  </div>
+
+  <h2>The Red Special</h2>
+  <div class="guitar-section">
+    <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Brian_May.JPG" alt="Brian May playing the Red Special live">
+    <div class="img-caption">Brian May live with the Red Special — the same guitar since 1964. (Wikimedia Commons)</div>
+
+    <p>Brian couldn't afford a real Fender, Gibson, or Höfner, so in <strong>August 1963</strong>
+    he and his father Harold started building one instead — evenings and weekends, over the
+    next fourteen months, finishing in October 1964. Brian still plays that exact guitar
+    today. It's nicknamed <strong>"the Fireplace"</strong> and <strong>"the Old Lady."</strong></p>
+
+    <h3>What it's actually made of</h3>
+    <div class="spec-grid">
+      <div><span class="label">Neck:</span> a 100-year-old mahogany fireplace mantel a family friend was about to bin</div>
+      <div><span class="label">Fretboard:</span> oak, painted black, worm holes filled with matchsticks</div>
+      <div><span class="label">Body:</span> blockboard with oak inserts from an old table, faced in mahogany veneer to look solid</div>
+      <div><span class="label">Fret markers:</span> hand-shaped mother-of-pearl buttons</div>
+      <div><span class="label">Edging:</span> white plastic shelf trim, to stop the edges chipping</div>
+      <div><span class="label">Total cost:</span> about £17.45 — nearly everything was scavenged from around the house</div>
+    </div>
+
+    <h3>The tremolo — the clever bit</h3>
+    <p>Brian wanted dive-bombs that snapped back perfectly in tune, so he engineered a knife-edge
+    tremolo from an old hardened-steel blade, tensioned by <strong>two motorbike valve
+    springs</strong> fighting the strings' 79 lb of pull. The arm itself is a bicycle
+    saddlebag-holder, tipped with a piece of plastic knitting needle. The bridge rollers were
+    hand-shaped by Brian with a drill, sandpaper, and a file so the strings glide back to pitch
+    with zero friction.</p>
+
+    <h3>Sound</h3>
+    <p>Three Burns Tri-Sonic pickups, each with its own on/off and phase switch — giving Brian
+    a huge range of tones from one guitar without ever touching a pedal. He picks with an old
+    English <strong>sixpence coin</strong> instead of a plectrum, for a brighter, harder attack.
+    He built it deliberately to feed back and "sing," after watching Jeff Beck get sounds just
+    by moving his guitar near the amp.</p>
+
+    <h3>Why it matters</h3>
+    <p>Virtually every guitar part on every Queen record — "Bohemian Rhapsody," "We Will Rock
+    You," all of it — is this one homemade instrument. A guitar a teenager and his dad built
+    for the cost of a few pub rounds ended up defining the sound of one of the biggest bands
+    in the world.</p>
+  </div>
+
+  <h2>Turning Points</h2>
+  <div class="era"><span class="year">1975</span> — "Bohemian Rhapsody" released. Six minutes,
+  no chorus, an operatic middle section, and a record label told them it would never get
+  radio play. It became one of the best-selling singles in UK history.</div>
+  <div class="era"><span class="year">1977</span> — "We Will Rock You" / "We Are the Champions."
+  Written deliberately as songs the crowd could sing back. It worked; it's still working.</div>
+  <div class="era"><span class="year">1980</span> — "Another One Bites the Dust" — a bassline
+  Deacon wrote after listening to Chic, and Queen's biggest US hit.</div>
+  <div class="era"><span class="year">13 July 1985</span> — Live Aid, Wembley. Twenty minutes
+  that are still taught as the definition of how to command a stadium. "Ay-oh" call and
+  response with 72,000 people. Widely rated the greatest live performance in rock history.</div>
+  <div class="era"><span class="year">24 November 1991</span> — Freddie Mercury died of
+  AIDS-related bronchopneumonia, one day after publicly confirming his diagnosis. He kept
+  recording vocals until his voice gave out.</div>
+
+  <div class="quote">
+    "Nothing really matters, anyone can see,<br>
+    nothing really matters — nothing really matters to me."
+    <span>— Bohemian Rhapsody, 1975</span>
+  </div>
+
+  <footer>refresh anytime — long live the Queen</footer>
+</div>
+
+</body>
+</html>
