@@ -1,11 +1,14 @@
-﻿# alistermunday.github.io
+# alistermunday.github.io
 
 Source for [alistermunday.com](https://alistermunday.com).
 
-## What this is (as of 2 Aug 2026)
+## What this is (as of 3 Aug 2026)
 
-A future dedicated site for "Difficult Truths." Not built yet — currently just
-a placeholder. Deliberately NOT a mirror of the personal notebook (that lives
-local-only, never published — see `webpages/` in the main workspace).
+Serves only pages Alister explicitly asks to put on the public site — never a
+mirror of the local notebook (that lives local-only, never published, see
+`webpages/` in the main workspace). Right now that's one page: the Queen
+homage (`index.html`).
+
+"Difficult Truths" is a separate future project, parked for now.
 
 Plain static HTML, no build step, no Jekyll (see `.nojekyll`).
