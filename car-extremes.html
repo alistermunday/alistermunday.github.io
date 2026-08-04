@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Extremes on Wheels</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;500&display=swap');
+
+  body {
+    background: #0f1115;
+    color: #d4d7dc;
+    font-family: 'Inter', -apple-system, Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 0 0 80px;
+  }
+  .hero {
+    text-align: center;
+    padding: 70px 20px 30px;
+    background:
+      radial-gradient(ellipse at 25% 0%, rgba(255,106,61,0.18), transparent 60%),
+      radial-gradient(ellipse at 75% 0%, rgba(60,140,255,0.14), transparent 60%),
+      #101216;
+    border-bottom: 2px solid #22252c;
+  }
+  h1 {
+    font-family: 'Oswald', Impact, sans-serif;
+    font-weight: 700;
+    font-size: 3.2em;
+    letter-spacing: 3px;
+    margin: 0;
+    color: #f1f2f4;
+    text-transform: uppercase;
+  }
+  .subtitle {
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    color: #8a8f99;
+    margin-top: 12px;
+    font-size: 0.95em;
+    letter-spacing: 0.5px;
+  }
+  .container { max-width: 900px; margin: 0 auto; padding: 0 22px; }
+  .intro {
+    max-width: 720px;
+    margin: 40px auto 10px;
+    font-size: 1.1em;
+    color: #b8bcc4;
+    line-height: 1.75;
+    border-left: 3px solid #ff6a3d;
+    padding-left: 20px;
+  }
+  .axis { margin: 66px 0; }
+  .axis-label {
+    text-align: center;
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 5px;
+    font-size: 0.82em;
+    color: #6b7280;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .axis-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .panel {
+    background: #14161c;
+    border: 1px solid #262a33;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 8px 26px rgba(0,0,0,0.45);
+  }
+  .panel img {
+    width: 100%;
+    display: block;
+  }
+  .panel .cap { padding: 20px 22px 24px; }
+  .rank {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.76em;
+    letter-spacing: 2px;
+    padding: 3px 10px;
+    border-radius: 3px;
+    margin-bottom: 14px;
+  }
+  .rank.hi {
+    color: #ff8a63;
+    background: rgba(255,106,61,0.1);
+    border: 1px solid rgba(255,106,61,0.3);
+  }
+  .rank.lo {
+    color: #6ea0ff;
+    background: rgba(60,140,255,0.1);
+    border: 1px solid rgba(60,140,255,0.3);
+  }
+  .panel h3 {
+    margin: 0 0 4px;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    letter-spacing: 1px;
+    font-size: 1.3em;
+    color: #f1f2f4;
+    text-transform: uppercase;
+  }
+  .model {
+    font-size: 0.9em;
+    color: #8a8f99;
+    margin-bottom: 14px;
+    font-style: italic;
+  }
+  .stat {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin: 14px 0 6px;
+    padding: 10px 14px;
+    background: #0f1115;
+    border-radius: 4px;
+    border: 1px solid #22252c;
+  }
+  .stat .num {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    font-size: 1.5em;
+  }
+  .stat.hi .num { color: #ff8a63; }
+  .stat.lo .num { color: #6ea0ff; }
+  .stat .unit {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78em;
+    color: #8a8f99;
+    letter-spacing: 1px;
+  }
+  .source {
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7em;
+    color: #565b66;
+    letter-spacing: 0.5px;
+    margin: 8px 0 16px;
+  }
+  .panel p {
+    margin: 0 0 12px;
+    line-height: 1.75;
+    color: #c0c4cc;
+    font-size: 0.94em;
+  }
+  .panel p:last-of-type { margin-bottom: 0; }
+  .section-break {
+    margin: 70px 0 30px;
+    text-align: center;
+  }
+  .section-break .rule {
+    color: #565b66;
+    letter-spacing: 5px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8em;
+    text-transform: uppercase;
+  }
+  .section-break p {
+    max-width: 560px;
+    margin: 16px auto 0;
+    color: #9a9fa8;
+    line-height: 1.7;
+    font-size: 0.98em;
+  }
+  .grid {
+    max-width: 720px;
+    margin: 0 auto 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+  }
+  .mini-card {
+    background: #14161c;
+    border: 1px solid #262a33;
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .mini-card img { width: 100%; display: block; }
+  .mini-card .cap { padding: 14px 16px 18px; }
+  .mini-card h4 {
+    margin: 0 0 6px;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    font-size: 1.05em;
+    color: #e8e9ec;
+  }
+  .mini-card p {
+    margin: 0;
+    font-size: 0.86em;
+    line-height: 1.55;
+    color: #9a9fa8;
+  }
+  footer {
+    text-align: center;
+    margin-top: 60px;
+    color: #565b66;
+    font-size: 0.8em;
+    letter-spacing: 0.5px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  @media (max-width: 640px) {
+    h1 { font-size: 2.2em; }
+    .axis-pair { grid-template-columns: 1fr; }
+    .grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <h1>Extremes on Wheels</h1>
+  <div class="subtitle">twelve records, six axes, one rule for all of them</div>
+</div>
+
+<div class="container">
+
+  <p class="intro">
+    The rule is simple: it had to have been for sale. Not a concept, not a
+    one-off show car, not a rendering somebody's marketing department leaked.
+    If a dealership somewhere, at some point, could hand an actual customer
+    the keys, it qualifies. Twelve records, twelve real production cars,
+    arranged in six axes — because every extreme is more interesting standing
+    right next to its opposite.
+  </p>
+
+  <div class="axis">
+    <div class="axis-label">— speed —</div>
+    <div class="axis-pair">
+
+      <div class="panel">
+        <img src="img/car-extremes/01_fastest.jpg" alt="Futuristic electric hypercar at speed on a test track">
+        <div class="cap">
+          <span class="rank hi">FASTEST</span>
+          <h3>Yangwang U9 Xtreme</h3>
+          <div class="model">BYD, 2025</div>
+          <div class="stat hi"><span class="num">308.4</span><span class="unit">MPH VERIFIED</span></div>
+          <span class="source">— BYD / ATP Papenburg, Sept 2025 (AI-rendered — too new for a free-license photo)</span>
+          <p>On 14 September 2025 this thing hit 308.4 mph on a test track in
+          Papenburg, Germany — the highest verified speed any production car
+          has ever run, electric or otherwise. It knocked the Bugatti Chiron
+          Super Sport 300+ off a throne that had stood since 2019. Four
+          motors, one built into each wheel, pushing just under 3,000
+          horsepower through a 1,200-volt system built for exactly this. BYD
+          is building thirty.</p>
+        </div>
+      </div>
+
+      <div class="panel">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/1965_Peel_P50,_The_World's_Smallest_Car_(Lane_Motor_Museum).jpg" alt="Peel P50 microcar, Lane Motor Museum">
+        <div class="cap">
+          <span class="rank lo">SLOWEST</span>
+          <h3>Peel P50</h3>
+          <div class="model">Peel Engineering, Isle of Man, 1962</div>
+          <div class="stat lo"><span class="num">28</span><span class="unit">MPH TOP SPEED</span></div>
+          <span class="source">— Peel Engineering / Guinness World Records (photo: Wikimedia Commons)</span>
+          <p>A 60kg fibreglass shoebox built to carry one adult and one bag of
+          shopping. The 1962 original topped out around 37mph; the version
+          still being built today — yes, it's still in production — caps out
+          nearer 28mph. Nothing wearing a number plate has ever been
+          officially recorded slower. (It also turns out to be the smallest
+          car ever made — see the Size axis below.)</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="axis">
+    <div class="axis-label">— size —</div>
+    <div class="axis-pair">
+
+      <div class="panel">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Bugatti_Royale_Berline_Type_41_de_1928_-_Usine_Bugatti_de_Molsheim.jpg" alt="Bugatti Royale Type 41, Molsheim factory">
+        <div class="cap">
+          <span class="rank hi">BIGGEST</span>
+          <h3>Bugatti Royale (Type 41)</h3>
+          <div class="model">Bugatti, 1927–1933</div>
+          <div class="stat hi"><span class="num">6.4m</span><span class="unit">LONG, 12.7L ENGINE</span></div>
+          <span class="source">— Bugatti archives (photo: Wikimedia Commons)</span>
+          <p>Six were built; only three ever found a buyer. The Royale is
+          over 20% longer than a Rolls-Royce Phantom, riding on a 4.3m
+          wheelbase and carrying a straight-eight so large a single cylinder
+          head weighs more than most entire engines on this page — bar the
+          Veyron's.</p>
+        </div>
+      </div>
+
+      <div class="panel">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Peel_P50_at_Manx_Transport_Museum,_Peel,_Isle_of_Man_(7965563148).jpg" alt="Peel P50 microcar, Manx Transport Museum, Isle of Man">
+        <div class="cap">
+          <span class="rank lo">SMALLEST</span>
+          <h3>Peel P50</h3>
+          <div class="model">Peel Engineering, Isle of Man, 1962</div>
+          <div class="stat lo"><span class="num">134cm</span><span class="unit">LONG, 60KG</span></div>
+          <span class="source">— Guinness World Records (photo: Wikimedia Commons)</span>
+          <p>The same car holding the slowest crown, above, also holds the
+          smallest — officially the tiniest production car ever made, per
+          Guinness. It's shorter than most adult humans are tall, and weighs
+          about the same as the average fridge.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="axis">
+    <div class="axis-label">— engineering —</div>
+    <div class="axis-pair">
+
+      <div class="panel">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Bugatti_Veyron_16.4_2.JPG" alt="Bugatti Veyron 16.4">
+        <div class="cap">
+          <span class="rank hi">MOST COMPLEX</span>
+          <h3>Bugatti Veyron / Chiron</h3>
+          <div class="model">Bugatti, 2005–present</div>
+          <div class="stat hi"><span class="num">3,500+</span><span class="unit">PARTS, ENGINE ALONE</span></div>
+          <span class="source">— Bugatti / Jalopnik engineering breakdowns (photo: Wikimedia Commons)</span>
+          <p>The W16 is two V8s bolted together at 90 degrees, fed by four
+          turbochargers and cooled by ten separate radiators. Just the engine
+          takes more than 3,500 hand-fitted parts before it's bolted to
+          anything else. Two decades on, it's still the benchmark for how
+          complicated a road car is legally allowed to be.</p>
+        </div>
+      </div>
+
+      <div class="panel">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Citroën_2CV_1973.JPG" alt="Citroën 2CV, 1973">
+        <div class="cap">
+          <span class="rank lo">SIMPLEST</span>
+          <h3>Citroën 2CV</h3>
+          <div class="model">Citroën, 1948–1990</div>
+          <div class="stat lo"><span class="num">3.8M</span><span class="unit">BUILT OVER 42 YEARS</span></div>
+          <span class="source">— Citroën heritage archives (photo: Wikimedia Commons)</span>
+          <p>Citroën's actual 1930s brief: build something that can carry a
+          farmer, his wife, and a basket of eggs across a ploughed field at
+          50km/h — without breaking a single egg — on no more than 3 litres
+          of fuel per 100km. The result was an air-cooled twin with barely a
+          gasket in it, universally nicknamed "an umbrella on wheels." It
+          stayed in production, largely unbothered by the rest of the
+          automotive industry, until 1990.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="axis">
+    <div class="axis-label">— money —</div>
+    <div class="axis-pair">
+
+      <div class="panel">
+        <img src="img/car-extremes/07_most_expensive.jpg" alt="Ultra-luxury bespoke black convertible with wood parquetry interior in a hangar">
+        <div class="cap">
+          <span class="rank hi">MOST EXPENSIVE</span>
+          <h3>Rolls-Royce La Rose Noire Droptail</h3>
+          <div class="model">Rolls-Royce Coachbuild, 2026</div>
+          <div class="stat hi"><span class="num">$32M</span><span class="unit">APPROX. PRICE</span></div>
+          <span class="source">— Rolls-Royce Motor Cars (AI-rendered — one-off bespoke car, no free-license photo exists)</span>
+          <p>Rolls-Royce's Coachbuild programme builds a handful of these a
+          year, each one bespoke down to the wood. This one's interior alone
+          uses a 1,603-piece sycamore parquetry floor and paint that shifts
+          colour depending on the angle you catch it. Currently the highest
+          price a manufacturer will actually sell you a new car for.</p>
+        </div>
+      </div>
+
+      <div class="panel">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Tata_Nano_Yellow.jpg" alt="Tata Nano, yellow">
+        <div class="cap">
+          <span class="rank lo">CHEAPEST</span>
+          <h3>Tata Nano</h3>
+          <div class="model">Tata Motors, India, 2008–2018</div>
+          <div class="stat lo"><span class="num">$1,980</span><span class="unit">LAUNCH PRICE</span></div>
+          <span class="source">— Tata Motors launch pricing, 2008 (photo: Wikimedia Commons)</span>
+          <p>Launched in 2008, the base Nano shipped with no power steering,
+          no airbags, no air-con, no radio, and — depending who you ask — no
+          power brakes either. It did the one job it was built for: put four
+          wheels within reach of people who'd never owned a car before.
+          Production ended in 2018.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="axis">
+    <div class="axis-label">— popularity —</div>
+    <div class="axis-pair">
+
+      <div class="panel">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Toyota_Corolla_(E150)_sedan.jpg" alt="Toyota Corolla (E150) sedan">
+        <div class="cap">
+          <span class="rank hi">BEST-SELLING</span>
+          <h3>Toyota Corolla</h3>
+          <div class="model">Toyota, 1966–present</div>
+          <div class="stat hi"><span class="num">50M+</span><span class="unit">SOLD SINCE 1966</span></div>
+          <span class="source">— Toyota Motor Corporation (photo: Wikimedia Commons)</span>
+          <p>Somewhere on the planet, a new Corolla leaves a dealership
+          roughly every 28 seconds. Toyota passed fifty million sold back in
+          2021 and hasn't stopped counting since — more than any other
+          nameplate in automotive history, across twelve generations built on
+          four continents. Its secret was never excitement. It was being the
+          car the fewest people ever regretted buying.</p>
+        </div>
+      </div>
+
+      <div class="panel">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/McLaren_F1.jpg" alt="McLaren F1">
+        <div class="cap">
+          <span class="rank lo">RAREST</span>
+          <h3>McLaren F1</h3>
+          <div class="model">McLaren, 1992–1998</div>
+          <div class="stat lo"><span class="num">106</span><span class="unit">EVER BUILT</span></div>
+          <span class="source">— McLaren Automotive production records (photo: Wikimedia Commons)</span>
+          <p>Sixty-four road cars, a handful of GTR racers, five LMs, two GTs,
+          and a few prototypes — 106 examples, total, forever. Central
+          driving seat, a gold-lined engine bay (gold reflects heat better
+          than anything cheaper), and a new price that started around
+          $815,000 and only ever moved one direction from there. Nobody is
+          building a 107th.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="axis">
+    <div class="axis-label">— fuel —</div>
+    <div class="axis-pair">
+
+      <div class="panel">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/1970_Dodge_Challenger_RT_426_Hemi_(22162094610).jpg" alt="1970 Dodge Challenger R/T 426 Hemi">
+        <div class="cap">
+          <span class="rank hi">THIRSTIEST</span>
+          <h3>Dodge Challenger 426 Hemi</h3>
+          <div class="model">Dodge, 1969–1971</div>
+          <div class="stat hi"><span class="num">6.7</span><span class="unit">MPG</span></div>
+          <span class="source">— period EPA-equivalent test data (photo: Wikimedia Commons)</span>
+          <p>A 425-horsepower 7.0-litre V8 built for the quarter mile, not the
+          commute, and it showed at the pumps: roughly 6.7 miles to the
+          gallon, tested the old-fashioned way — foot flat to the floor.
+          Nothing sold new since has been recorded thirstier. Still, by a
+          wide margin, the least economical legal way two people have ever
+          gone to the shops.</p>
+        </div>
+      </div>
+
+      <div class="panel">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/VW_XL_1_vr.JPG" alt="Volkswagen XL1">
+        <div class="cap">
+          <span class="rank lo">MOST EFFICIENT</span>
+          <h3>Volkswagen XL1</h3>
+          <div class="model">Volkswagen, 2014–2016</div>
+          <div class="stat lo"><span class="num">0.9L</span><span class="unit">PER 100KM (261 MPG)</span></div>
+          <span class="source">— Volkswagen Newsroom (photo: Wikimedia Commons)</span>
+          <p>Wing mirrors were replaced with cameras. The rear wheels wear
+          covers. The whole shape exists purely to argue with the air as
+          little as possible. The result, officially, was 0.9 litres per
+          100km — 261mpg in old money — a figure no production car has
+          matched since. Volkswagen built 250, sold 200, and quietly proved a
+          diesel-electric hybrid could out-frugal a bicycle courier.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="section-break">
+    <div class="rule">— honourable mentions —</div>
+    <p>And for the famous fictional cars that never had to worry about being
+    real, passing an emissions test, or staying on the road for longer than a
+    chase scene — rendered as if they actually rolled off a real production
+    line:</p>
+  </div>
+
+  <div class="grid">
+    <div class="mini-card">
+      <img src="img/car-extremes/09_flintstones.jpg" alt="Photorealistic render of the Flintstones' foot-powered stone-age car">
+      <div class="cap">
+        <h4>The Flintstones' Car</h4>
+        <p>Stone chassis, log wheels, no floor — the engine was always Fred's
+        own two feet.</p>
+      </div>
+    </div>
+    <div class="mini-card">
+      <img src="img/car-extremes/10_wacky_racer.jpg" alt="Photorealistic render of Dick Dastardly's Mean Machine from Wacky Races">
+      <div class="cap">
+        <h4>The Mean Machine — Wacky Races</h4>
+        <p>Dick Dastardly's car, built for exactly one purpose: winning, by
+        any means, several of them illegal.</p>
+      </div>
+    </div>
+    <div class="mini-card">
+      <img src="img/car-extremes/11_flying_car.jpg" alt="Photorealistic render of Chitty Chitty Bang Bang">
+      <div class="cap">
+        <h4>Chitty Chitty Bang Bang</h4>
+        <p>Brass, wood, and a healthy disregard for aerodynamics — the only
+        car here that's also a boat and a plane.</p>
+      </div>
+    </div>
+    <div class="mini-card">
+      <img src="img/car-extremes/12_absurd_car.jpg" alt="Photorealistic render of Homer Simpson's car design, The Homer">
+      <div class="cap">
+        <h4>The Homer — The Simpsons</h4>
+        <p>Designed by a target market of exactly one father, featuring three
+        horns and a bowling-ball holder nobody asked for.</p>
+      </div>
+    </div>
+    <div class="mini-card">
+      <img src="img/car-extremes/13_mystery_van.jpg" alt="Photorealistic render of the Mystery Machine from Scooby-Doo">
+      <div class="cap">
+        <h4>The Mystery Machine — Scooby-Doo</h4>
+        <p>Would've gotten away with it too, if it weren't for this van's
+        paint job giving away its location from three streets over.</p>
+      </div>
+    </div>
+    <div class="mini-card">
+      <img src="img/car-extremes/14_racing_beetle.jpg" alt="Photorealistic render of Herbie the Love Bug">
+      <div class="cap">
+        <h4>Herbie — The Love Bug</h4>
+        <p>More personality than its driver, and — most weeks — a better
+        finishing record too.</p>
+      </div>
+    </div>
+  </div>
+
+  <footer>facts checked against current manufacturer &amp; press records, August 2026 — subject to whoever breaks the next one</footer>
+</div>
+
+</body>
+</html>
