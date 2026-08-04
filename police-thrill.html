@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>The Regular</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Special+Elite&family=EB+Garamond:ital@0;1&display=swap');
+
+  body {
+    background: #060608;
+    color: #d8d4cc;
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 1.08em;
+    margin: 0;
+    padding: 0 0 80px;
+  }
+  .hero {
+    text-align: center;
+    padding: 70px 20px 26px;
+    background:
+      radial-gradient(ellipse at 30% 0%, rgba(30,60,140,0.25), transparent 60%),
+      radial-gradient(ellipse at 70% 0%, rgba(140,20,20,0.22), transparent 60%),
+      #08080b;
+    border-bottom: 2px solid #23232b;
+  }
+  h1 {
+    font-family: 'Bebas Neue', Impact, sans-serif;
+    font-weight: 400;
+    font-size: 4em;
+    letter-spacing: 6px;
+    margin: 0;
+    color: #eae6dc;
+    text-shadow: 0 0 14px rgba(60,110,255,0.55), 0 0 22px rgba(255,60,40,0.35);
+  }
+  .subtitle {
+    font-family: 'Special Elite', 'Courier New', monospace;
+    font-style: normal;
+    color: #8f8a80;
+    margin-top: 10px;
+    font-size: 0.9em;
+    letter-spacing: 1px;
+  }
+  .container { max-width: 720px; margin: 0 auto; padding: 0 22px; }
+  .intro {
+    font-size: 1.15em;
+    color: #c8c2b4;
+    margin: 40px auto 10px;
+    line-height: 1.8;
+    font-style: italic;
+    border-left: 3px solid #3a3a46;
+    padding-left: 20px;
+  }
+  .panel {
+    margin: 50px 0 30px;
+    background: #0d0d10;
+    border: 1px solid #26262e;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 6px 24px rgba(0,0,0,0.5);
+  }
+  .panel img {
+    width: 100%;
+    display: block;
+    filter: saturate(1.02) contrast(1.03);
+  }
+  .panel .cap {
+    padding: 20px 24px 24px;
+    border-top: 1px solid #1c1c22;
+  }
+  .tag {
+    display: inline-block;
+    font-family: 'Bebas Neue', Impact, sans-serif;
+    letter-spacing: 3px;
+    font-size: 0.8em;
+    color: #6ea0ff;
+    background: rgba(60,100,220,0.12);
+    border: 1px solid rgba(60,100,220,0.35);
+    padding: 3px 10px;
+    border-radius: 3px;
+    margin-bottom: 12px;
+  }
+  .tag.red {
+    color: #ff8a70;
+    background: rgba(220,70,50,0.1);
+    border-color: rgba(220,70,50,0.3);
+  }
+  .panel h3, .interlude h3 {
+    margin: 0 0 12px;
+    font-family: 'Bebas Neue', Impact, sans-serif;
+    letter-spacing: 2px;
+    font-size: 1.7em;
+    color: #eae6dc;
+  }
+  .panel p, .interlude p {
+    margin: 0 0 15px;
+    line-height: 1.85;
+    color: #b8b2a4;
+    font-size: 1em;
+  }
+  .panel p:last-of-type, .interlude p:last-of-type { margin-bottom: 0; }
+  .script {
+    margin: 16px 0;
+    padding: 14px 18px;
+    background: #101014;
+    border-left: 3px solid #3a3a46;
+    border-radius: 2px;
+    font-family: 'Special Elite', 'Courier New', monospace;
+    font-size: 0.88em;
+    line-height: 2;
+    color: #cfc9bc;
+  }
+  .script .who {
+    color: #6ea0ff;
+    letter-spacing: 1px;
+    margin-right: 6px;
+  }
+  .script .line { display: block; }
+  .script .line.officer .who,
+  .script .line.mate .who {
+    color: #ff8a70;
+  }
+  .script strong { color: #eae6dc; }
+  .interlude {
+    margin: 56px 0;
+    text-align: center;
+  }
+  .interlude .rule {
+    color: #4a4a54;
+    letter-spacing: 6px;
+    font-family: 'Bebas Neue', Impact, sans-serif;
+    font-size: 0.85em;
+    margin-bottom: 18px;
+  }
+  .interlude .body {
+    text-align: left;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+  .interlude .script { text-align: left; }
+  .site-nav { max-width: 720px; margin: 0 auto; font-size: 0.85em; padding-top: 20px; font-family: 'Special Elite', 'Courier New', monospace; }
+  .site-nav a { color: #6ea0ff; text-decoration: none; margin-right: 14px; }
+  .site-nav a:hover { color: #eae6dc; }
+  footer {
+    text-align: center;
+    margin-top: 60px;
+    color: #4a4a54;
+    font-size: 0.8em;
+    letter-spacing: 1px;
+    font-family: 'Special Elite', 'Courier New', monospace;
+  }
+</style>
+</head>
+<body>
+
+
+<div class="hero">
+  <h1>THE REGULAR</h1>
+  <div class="subtitle">a dare that never stopped growing — fiction</div>
+</div>
+
+<div class="container">
+
+  <p class="intro">
+    Every so often a man finds the thing he was put on this earth to do. Some
+    people find God. Some find a five-a-side team that finally clicks. This is
+    the story of a man who found his calling was making the police believe
+    something terrible was happening to him — and discovered, much to his own
+    delight, that there is no feeling on the planet quite like being taken
+    completely seriously. It started as a dare. It ended as a vocation.
+  </p>
+
+  <div class="panel">
+    <img src="img/police-thrill/01_dare.jpg" alt="Mates egging him on in a pub garden">
+    <div class="cap">
+      <span class="tag">ONE — THE DARE</span>
+      <h3>Last Orders</h3>
+      <p>The beer garden out the back of the Feathers, gone eleven, four pints
+      in. Someone says the thing that starts everything — it changes depending
+      on who's telling it by now. <em>Bet you won't ring 999 on yourself.</em>
+      Not on anyone else. On himself.</p>
+      <p>It gets a laugh before anyone's even done it. He doesn't think past
+      the dare. Somebody's phone is already in his hand, and somebody else
+      already has theirs out filming.</p>
+      <div class="script">
+        <span class="line mate"><span class="who">MATE:</span> "Bet you won't."</span>
+        <span class="line"><span class="who">HIM:</span> "...how much?"</span>
+        <span class="line mate"><span class="who">MATE:</span> "Tenner. And you've
+        got to sound proper worried."</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <img src="img/police-thrill/02_first_call.jpg" alt="Him on the phone outside the pub, nervous grin">
+    <div class="cap">
+      <span class="tag red">TWO — THE CALL</span>
+      <h3>Dialling</h3>
+      <p>Out on the pavement, away from the noise, and it turns out dialling
+      three nines is a bigger swallow than four pints of confidence made it
+      look. His voice comes out steadier than he feels — turns out he can lie
+      this convincingly, and nobody on the other end has any reason yet to
+      doubt him.</p>
+      <p>Behind him, his mate's filming, shoulders shaking with the effort of
+      staying quiet.</p>
+      <div class="script">
+        <span class="line"><span class="who">HIM (calm voice on):</span> "Yeah, hiya —
+        there's a fella acting proper dodgy outside the Kings Head, been at it a good
+        ten minutes now, keeps looking in through the windows."</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <img src="img/police-thrill/wait.jpg" alt="Him and his mates crouched behind a wall, waiting">
+    <div class="cap">
+      <span class="tag">THREE — THE WAIT</span>
+      <h3>Ringing Out</h3>
+      <p>Nobody plans for the waiting. Four grown men crouched behind a garden
+      wall like it's still school, not sure it even worked. This is the part
+      where it could still have died as a one-off story. It doesn't get that
+      chance.</p>
+      <div class="script">
+        <span class="line mate"><span class="who">MATE (whisper):</span> "It's not
+        gonna work, they've got better things to do."</span>
+        <span class="line"><span class="who">HIM (whisper):</span> "Shhh. Shhh —
+        it's ringing."</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <img src="img/police-thrill/03_blue_lights.jpg" alt="Blue lights on the terraced street">
+    <div class="cap">
+      <span class="tag red">FOUR — BLUE LIGHTS</span>
+      <h3>It Actually Worked</h3>
+      <p>A car turns up — blue light washing the wet tarmac — and for one
+      second before anyone speaks he feels something with no name yet. Not
+      fear, which is what four pints and common sense say he should feel, but
+      something closer to relief. Being noticed, it turns out, is the whole
+      thing.</p>
+      <p>He's too busy performing sheepish for the officer to notice that.</p>
+      <div class="script">
+        <span class="line officer"><span class="who">OFFICER:</span> "Evening lads.
+        Everything alright out here?"</span>
+        <span class="line"><span class="who">HIM:</span> "All sorted now, officer.
+        Bit of a false alarm, sorry to drag you out."</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <img src="img/police-thrill/retelling.jpg" alt="Him telling the story to a bigger crowd in a different pub">
+    <div class="cap">
+      <span class="tag">FIVE — THE RETELLING</span>
+      <h3>You Should've Seen Their Faces</h3>
+      <p>A few nights later, different pub, a crowd who weren't there and can't
+      check the details. He tells it again — and the retelling lands better
+      than the real night did. He notices himself adding things. The officer
+      gets sterner each telling. By the third go he's written a better draft of
+      his own life than the one that happened.</p>
+      <p>Nobody in that pub knows it, but they've just watched the actual
+      addictive part happen, and it wasn't the police.</p>
+      <div class="script">
+        <span class="line mate"><span class="who">NEW MATE:</span> "No way you
+        actually got a car out for that."</span>
+        <span class="line"><span class="who">HIM:</span> "Swear down. Blue lights
+        and everything."</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <img src="img/police-thrill/04_alone_again.jpg" alt="Him alone in his bedroom, dialling again">
+    <div class="cap">
+      <span class="tag red">SIX — ALONE</span>
+      <h3>No Dare This Time</h3>
+      <p>No mates. No audience, no tenner riding on it. Sat on the edge of his
+      own bed, curtains open on an empty street, he dials again anyway. The
+      report's a size bigger this time — not a bloke loitering, a door being
+      tried, twice. He adds detail without needing to be dared. The nervous
+      grin's gone. This one's just excited.</p>
+      <div class="script">
+        <span class="line"><span class="who">HIM (to the call handler):</span> "...he's
+        had a go at the door twice now, corner of Beech Road. I'm not being funny,
+        but I think he might have something on him."</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <img src="img/police-thrill/comedown.jpg" alt="Him sitting alone on the stairs after hanging up">
+    <div class="cap">
+      <span class="tag">SEVEN — THE COMEDOWN</span>
+      <h3>Might Actually Be Good At This</h3>
+      <p>Afterwards, sat on the stairs in a silent house, phone still warm
+      against his leg. No claps on the back this time, no group chat lighting
+      up — and he clocks, with something like delight, that he didn't need any
+      of that. The feeling holds up completely on its own. This is the moment
+      it stops being about attention and starts being about something closer
+      to a hobby he's just discovered he's brilliant at.</p>
+      <div class="script">
+        <span class="line"><span class="who">HIM (to no one):</span> "...I might
+        actually be good at this."</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <img src="img/police-thrill/05_the_habit.jpg" alt="Him chatting to an officer on his doorstep, mug of tea">
+    <div class="cap">
+      <span class="tag red">EIGHT — THE REGULAR</span>
+      <h3>Tea on the Step</h3>
+      <p>Enough times, spaced out carefully, that it stops being an event and
+      starts being routine. Tea on the step. First-name terms with whichever
+      officer's drawn the short straw. The street's stopped twitching its
+      curtains. The dare is ancient history. Everyone involved has quietly
+      agreed this is manageable.</p>
+      <p>That agreement is about to get a lot more expensive.</p>
+      <div class="script">
+        <span class="line officer"><span class="who">OFFICER:</span> "Go on then —
+        what is it this time?"</span>
+        <span class="line"><span class="who">HIM:</span> "Come on, you know I
+        wouldn't waste your time... probably."</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <img src="img/police-thrill/escalation.jpg" alt="Him in his kitchen at night, calendar covered in red tally marks behind him">
+    <div class="cap">
+      <span class="tag">NINE — THE LOG</span>
+      <h3>What He Told Them, In Order</h3>
+      <p>A calendar goes up on the kitchen wall, nominally for shifts and
+      dentist appointments. In practice it becomes something closer to a
+      scoreboard, because somewhere around here he clocks the pattern that
+      runs the rest of this story: the bigger the call, the bigger the
+      response, and the bigger the response, the better he feels. It's not
+      complicated. It's basically darts.</p>
+      <div class="script">
+        <span class="line"><strong>"Bloke loitering outside the offie."</strong> —
+        one car, no lights. Solid seven out of ten.</span>
+        <span class="line"><strong>"Someone trying door handles up Beech
+        Road."</strong> — one car, blue lights on. Eight.</span>
+        <span class="line"><strong>"Row through the wall, sounds properly
+        nasty."</strong> — two cars. He watches from the window grinning like
+        it's his birthday.</span>
+        <span class="line"><strong>"Bloke acting like he's got a blade on him,
+        round the back of the chippy."</strong> — two cars and a dog unit. The
+        dog alone is worth a nine.</span>
+        <span class="line"><strong>"Window smashed two doors down, still in
+        there apparently."</strong> — three cars and the on-call sergeant,
+        personally. He has to bite down on a laugh.</span>
+        <span class="line"><strong>"Man acting like he might be carrying a
+        firearm, near the school."</strong> — armed response, a full cordon, a
+        helicopter doing lazy circles overhead. He stands in his garden
+        watching it and understands, properly, for the first time, what he's
+        for.</span>
+      </div>
+      <p>Most people who imagine a 3am knock from the police feel dread. He
+      started leaving the porch light on for them.</p>
+    </div>
+  </div>
+
+  <div class="interlude">
+    <div class="rule">— THE NIGHT HE WENT ALL IN —</div>
+    <div class="body">
+      <p>Third parties are all well and good, but somewhere past the
+      helicopter he runs out of other people to report. So this time, when the
+      call handler asks what's happening, he reaches for the only subject left
+      he hasn't tried: himself.</p>
+      <div class="script">
+        <span class="line"><span class="who">HIM:</span> "Yeah, it's about me,
+        this one. I've had a skinful, and I've got something on me I probably
+        shouldn't have. Class A. Best send someone, eh."</span>
+        <span class="line">A pause on the line. He grins straight through it.</span>
+        <span class="line"><span class="who">HIM:</span> "Might be a knife back
+        at the flat too. Couldn't swear to it."</span>
+      </div>
+      <p>There is no knife. There is a butter knife in a cutlery drawer, and a
+      man who has just discovered the single most efficient sentence in the
+      English language for getting a lot of police very interested in you very
+      quickly.</p>
+    </div>
+  </div>
+
+  <div class="panel">
+    <img src="img/police-thrill/cuffed.jpg" alt="Officers handcuffing him outside his house, calm and grinning">
+    <div class="cap">
+      <span class="tag red">TEN — TAKEN SERIOUSLY</span>
+      <h3>Full Response</h3>
+      <p>More turn up than ever before — enough that the street looks like
+      something's actually happened, for once. He doesn't run, doesn't shout.
+      He puts his wrists out almost helpfully. The officers are trained for
+      fear, trained for aggression. Nobody trained them for a man who looks,
+      when the cuffs click shut, like he's just been handed a trophy.</p>
+    </div>
+  </div>
+
+  <div class="panel">
+    <img src="img/police-thrill/cell.jpg" alt="Him relaxed on a cell bench under a blanket, utterly content">
+    <div class="cap">
+      <span class="tag">ELEVEN — THE CELL</span>
+      <h3>Checked In</h3>
+      <p>Property bagged, laces gone, a grey custody tracksuit that fits
+      nobody properly. And then the door, and the particular quiet of a cell
+      at two in the morning.</p>
+      <p>He lies back on the thin blue bench like a man who's checked into a
+      hotel he's been trying to get a booking at for years. Hands behind his
+      head. So obviously content that the custody sergeant on the hatch
+      actually stops to check he's alright.</p>
+      <div class="script">
+        <span class="line officer"><span class="who">SERGEANT:</span> "You're
+        very relaxed for someone who's just told us he's carrying."</span>
+        <span class="line"><span class="who">HIM:</span> "Best behaved cell you'll
+        have all night."</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <img src="img/police-thrill/interview.jpg" alt="Interview room, tired detective across the table, him pleased with himself">
+    <div class="cap">
+      <span class="tag red">TWELVE — UNDER CAUTION</span>
+      <h3>On the Tape</h3>
+      <p>He waves off the solicitor — didn't fancy one, wanted to enjoy this
+      properly. The detective's clearly seen this exact look on a face before;
+      it's tired disbelief more than anger by now. The tape runs. He doesn't
+      walk anything back. Given a room, an audience, and a machine that's
+      actually recording every word, he embellishes.</p>
+      <div class="script">
+        <span class="line officer"><span class="who">DETECTIVE:</span> "You do know
+        you don't have to keep doing this."</span>
+        <span class="line"><span class="who">HIM:</span> "Where's the fun in
+        stopping."</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="interlude">
+    <div class="rule">— WHAT HE ACTUALLY GOT FOR IT —</div>
+    <div class="body">
+      <p>A caution for wasting police time. Bail conditions nobody's
+      especially bothered enforcing on a man who keeps confessing to butter
+      knives. A safeguarding referral, because somewhere in the system his
+      file now reads less "criminal" and more "concern" — which, if you think
+      about it for two seconds, is its own small tragedy: the more seriously
+      he tries to be taken, the more everyone official decides he mustn't be.</p>
+      <p>His mates stop finding it funny somewhere around the second arrest.
+      He tells himself he doesn't mind. He's found something that doesn't need
+      an audience to work.</p>
+    </div>
+  </div>
+
+  <div class="panel">
+    <img src="img/police-thrill/06_full_bloom.jpg" alt="Him grinning in a room lit by blue and red light, scanner radio glowing">
+    <div class="cap">
+      <span class="tag">THIRTEEN — FULL BLOOM</span>
+      <h3>The Only Thing That Feels Like Something</h3>
+      <p>Whatever this started as, it isn't that any more. Scanner glowing on
+      the desk, clippings of his own name on the wall, blue and red pouring
+      through the window from vehicles he called there himself, arms
+      half-raised for applause nobody else in the room is giving him.</p>
+      <p>He has found the thing he was put on this earth to do, and it turns
+      out it was this. Some men get a five-a-side team. He got a reason to
+      live.</p>
+      <div class="script">
+        <span class="line"><span class="who">HIM (to himself):</span> "Nothing
+        else all week feels like this does."</span>
+      </div>
+    </div>
+  </div>
+
+  <footer>a made-up story — no real person, no real emergency line involved</footer>
+</div>
+
+</body>
+</html>
