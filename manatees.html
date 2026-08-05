@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gentle Giants</title>
+<!-- PAGE-META emoji="🌊" title="Gentle Giants" blurb="A celebration of manatees — the ocean's softest, slowest, most quietly remarkable animal. For anyone who already loves them." -->
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap');
+
+  :root {
+    --cream: #fbf6ee;
+    --seafoam-light: #eef8f5;
+    --seafoam: #d8f0ea;
+    --teal-deep: #1f5c56;
+    --teal-mid: #2f7d73;
+    --coral: #ff8f6b;
+    --coral-soft: #ffe7db;
+    --text: #3a4a47;
+    --text-soft: #71827d;
+  }
+
+  body {
+    background: var(--cream);
+    color: var(--text);
+    font-family: 'Nunito', -apple-system, Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 0 0 80px;
+  }
+  h1, h2, h3, h4 {
+    font-family: 'Quicksand', sans-serif;
+    color: var(--teal-deep);
+    margin: 0;
+  }
+  .site-nav { max-width: 900px; margin: 0 auto; font-size: 0.9em; padding: 20px 22px 0; font-family: 'Nunito', sans-serif; }
+  .site-nav a { color: var(--coral); text-decoration: none; font-weight: 700; }
+  .site-nav a:hover { color: var(--teal-deep); }
+
+  .hero {
+    text-align: center;
+    padding: 56px 20px 10px;
+    background:
+      radial-gradient(ellipse at 25% 0%, rgba(216,240,234,0.9), transparent 60%),
+      radial-gradient(ellipse at 75% 0%, rgba(255,231,219,0.7), transparent 60%),
+      var(--cream);
+  }
+  .hero-inner { max-width: 640px; margin: 0 auto; }
+  h1.title {
+    font-weight: 700;
+    font-size: 3.4em;
+    letter-spacing: 1px;
+    color: var(--teal-deep);
+  }
+  .subtitle {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 600;
+    color: var(--teal-mid);
+    margin-top: 12px;
+    font-size: 1.08em;
+  }
+
+  .container { max-width: 880px; margin: 0 auto; padding: 0 22px; }
+
+  .hero-photo {
+    margin: 34px auto 0;
+    max-width: 880px;
+    border-radius: 26px;
+    overflow: hidden;
+    box-shadow: 0 18px 44px rgba(31,92,86,0.22);
+  }
+  .hero-photo img { width: 100%; height: auto; display: block; }
+
+  .intro {
+    max-width: 700px;
+    margin: 44px auto 10px;
+    font-size: 1.12em;
+    color: var(--text);
+    line-height: 1.8;
+    border-left: 4px solid var(--coral);
+    padding-left: 22px;
+  }
+  .intro .sign-off {
+    display: block;
+    margin-top: 14px;
+    color: var(--teal-mid);
+    font-weight: 700;
+  }
+
+  .feature {
+    margin: 60px 0;
+    background: var(--seafoam-light);
+    border-radius: 22px;
+    overflow: hidden;
+    box-shadow: 0 14px 34px rgba(31,92,86,0.14);
+  }
+  .feature .media {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--seafoam-light);
+  }
+  .feature .media img { width: 100%; height: auto; display: block; }
+  .feature .cap { padding: 36px 38px; }
+  .eyebrow {
+    display: inline-block;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 0.76em;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--coral);
+    margin-bottom: 10px;
+  }
+  .feature h2 { font-size: 1.55em; font-weight: 700; margin-bottom: 14px; }
+  .feature p { line-height: 1.78; margin: 0 0 14px; font-size: 0.98em; }
+  .feature p:last-of-type { margin-bottom: 0; }
+  .credit {
+    display: block;
+    font-size: 0.7em;
+    color: var(--text-soft);
+    letter-spacing: 0.3px;
+    margin-top: 14px;
+  }
+
+  .baby-section {
+    margin: 90px 0;
+    background: linear-gradient(160deg, var(--coral-soft) 0%, #fff8f3 100%);
+    border-radius: 30px;
+    padding: 10px 10px 44px;
+    box-shadow: 0 18px 40px rgba(255,143,107,0.22);
+  }
+  .baby-label {
+    text-align: center;
+    padding: 30px 20px 6px;
+  }
+  .baby-label .eyebrow { color: var(--teal-mid); font-size: 0.85em; letter-spacing: 3px; }
+  .baby-label h2 { font-size: 2.1em; }
+  .baby-images {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 14px;
+    padding: 20px 30px 0;
+  }
+  .baby-images img {
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+    display: block;
+    box-shadow: 0 10px 26px rgba(0,0,0,0.18);
+  }
+  .baby-text { padding: 30px 42px 0; max-width: 700px; margin: 0 auto; }
+  .baby-text p { line-height: 1.85; font-size: 1.03em; margin: 0 0 18px; }
+  .stat-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    margin: 8px 0 26px;
+  }
+  .stat-pill {
+    background: #ffffff;
+    border: 1.5px solid var(--coral);
+    border-radius: 999px;
+    padding: 8px 18px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.82em;
+    font-weight: 800;
+    color: var(--teal-deep);
+    letter-spacing: 0.3px;
+  }
+  .stat-pill span { color: var(--coral); }
+
+  .section-break { margin: 80px 0 30px; text-align: center; }
+  .section-break .rule {
+    color: var(--teal-mid);
+    letter-spacing: 4px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 0.82em;
+    text-transform: uppercase;
+  }
+  .section-break p {
+    max-width: 600px;
+    margin: 16px auto 0;
+    color: var(--text-soft);
+    line-height: 1.75;
+    font-size: 1em;
+  }
+
+  .facts-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin: 30px 0 20px;
+  }
+  .fact-card {
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 26px 28px;
+    box-shadow: 0 10px 24px rgba(31,92,86,0.1);
+    border-left: 5px solid var(--teal-mid);
+  }
+  .fact-card:nth-child(even) { border-left-color: var(--coral); }
+  .fact-card h4 { font-size: 1.12em; margin-bottom: 10px; }
+  .fact-card p { margin: 0; line-height: 1.7; font-size: 0.93em; color: var(--text); }
+
+  footer {
+    text-align: center;
+    margin-top: 70px;
+    color: var(--text-soft);
+    font-size: 0.85em;
+    letter-spacing: 0.2px;
+    font-style: italic;
+  }
+
+  @media (max-width: 700px) {
+    h1.title { font-size: 2.3em; }
+    .facts-grid { grid-template-columns: 1fr; }
+    .baby-images { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV:START -->
+<nav class="site-nav"><a href="index.html">← home</a></nav>
+<!-- NAV:END -->
+
+<div class="hero">
+  <div class="hero-inner">
+    <h1 class="title">Gentle Giants</h1>
+    <div class="subtitle">a celebration of manatees — for anyone who already loves them</div>
+  </div>
+</div>
+
+<div class="hero-photo">
+  <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Mother_manatee_and_calf.jpg" alt="Manatee mother swimming with her calf">
+</div>
+
+<div class="container">
+
+  <p class="intro">
+    Manatees don't do fast, and they don't do fierce. They spend their days
+    drifting through warm, shallow water, working through dozens of kinds of
+    plants, mostly minding their own business — which might be exactly why
+    they're so easy to underestimate. They're closer kin to elephants than to
+    any other creature in the sea, they remember things for years at a time,
+    and they raise their calves with a tenderness that's hard to watch and not
+    fall for.
+    <span class="sign-off">This page is for anyone who already has.</span>
+  </p>
+
+  <div class="feature">
+    <div class="media"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Florida_Manatee_FWS_21.jpg" alt="Florida manatee"></div>
+    <div class="cap">
+      <span class="eyebrow">Meet the Gentle Giant</span>
+      <h2>Enormous, Unhurried, Entirely Harmless</h2>
+      <p>An adult manatee is a genuinely huge animal doing a very unhurried
+      impression of a much smaller one — typically around 3 metres long and
+      800 to 1,200 pounds, with the largest ever recorded pushing 15 feet and
+      close to 3,900 pounds. All of that mass runs on salad: manatees are
+      strict herbivores, working through more than 60 species of seagrass and
+      freshwater plants, and can spend up to eight hours a day grazing to take
+      in somewhere between 4 and 10 percent of their own body weight in
+      vegetation.</p>
+      <p>That size buys them something almost no other large wild animal
+      gets: manatees have no natural predators at all. The only real threat
+      they've ever faced is us — mostly boat strikes and cold water, never
+      teeth.</p>
+      <span class="credit">Photo: U.S. Fish &amp; Wildlife Service, via Wikimedia Commons</span>
+    </div>
+  </div>
+
+  <div class="feature">
+    <div class="media"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Trichechus_manatus_latirostris_manatee_underwater_animal.jpg" alt="Manatee swimming underwater"></div>
+    <div class="cap">
+      <span class="eyebrow">Cousins of the Elephant</span>
+      <h2>Closer Kin Than You'd Guess</h2>
+      <p>Their closest living relatives aren't dolphins or seals — they're
+      elephants. The resemblance shows up in oddly specific places: female
+      manatees have just two teats, tucked under the front flippers rather
+      than on the chest, exactly where an elephant's are, and manatee
+      flippers still carry small vestigial toenails — a quiet leftover from
+      four legs and dry land, tens of millions of years back, when both
+      branches of the family were still land animals.</p>
+      <p>The teeth make the case just as well. Manatees have what researchers
+      call "marching molars": new teeth form at the back of the jaw and
+      slowly migrate forward, about a millimetre a month, replacing the ones
+      wearing down and dropping out at the front — a literal conveyor belt
+      that runs for the animal's whole 50-to-60-year life. It's a trick
+      shared with exactly one other living mammal: the elephant, though an
+      elephant only gets six sets across a lifetime, where a manatee's molars
+      just keep on coming.</p>
+      <span class="credit">Photo: Wikimedia Commons</span>
+    </div>
+  </div>
+
+  <div class="feature">
+    <div class="media"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/NASA_Kennedy_Wildlife_-_Manatee_(3).jpg" alt="Manatee at NASA Kennedy Space Center wildlife refuge"></div>
+    <div class="cap">
+      <span class="eyebrow">Smarter Than She Looks</span>
+      <h2>A Very Good Memory, Undersold</h2>
+      <p>Manatees have a famously smooth-looking brain and a reputation,
+      pretty much entirely undeserved, for being simple animals. Researchers
+      at Florida's Mote Marine Laboratory ran manatees through texture- and
+      shape-discrimination tasks, then tested them again 14 and 29 months
+      later — the animals still performed at 100 percent accuracy, one of the
+      longer documented memory-retention results recorded in any non-primate
+      mammal.</p>
+      <p>In the wild, that memory shows up as detailed spatial knowledge:
+      manatees return to the same warm-water refuges and feeding grounds year
+      after year, and they've been observed playing — riding boat wakes,
+      gently mouthing objects, play-wrestling with each other — behaviour
+      usually associated with more obviously "clever" animals. Their other
+      quiet superpower is touch: manatees are covered, not just around the
+      face, in hundreds of sparse whiskers, used to feel out food, current,
+      and the shape of the world around them.</p>
+      <span class="credit">Photo: NASA / Kennedy Space Center wildlife program, via Wikimedia Commons</span>
+    </div>
+  </div>
+
+  <div class="baby-section">
+    <div class="baby-label">
+      <span class="eyebrow">as promised</span>
+      <h2>The Calves</h2>
+    </div>
+    <div class="baby-images">
+      <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Manatee_with_calf.PD_-_colour_corrected.jpg" alt="Manatee mother swimming with her calf">
+      <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Manatee_cow_and_calf_swimming_side_by_side.jpg" alt="Manatee mother and calf swimming side by side near the surface">
+    </div>
+    <div class="baby-text">
+      <div class="stat-row">
+        <div class="stat-pill">GESTATION <span>~12–13 MONTHS</span></div>
+        <div class="stat-pill">BIRTH WEIGHT <span>60–70 LBS</span></div>
+        <div class="stat-pill">NURSING <span>UP TO 2 YEARS</span></div>
+      </div>
+      <p>A manatee pregnancy lasts around 12 to 13 months and almost always
+      produces a single calf — twins happen, but rarely. A newborn is already
+      substantial: 3 to 4 feet long and 60 to 70 pounds, and within minutes of
+      being born it makes its first swim, straight up to the surface for its
+      first breath, usually with its mother's help.</p>
+      <p>Nursing happens underwater, from two teats tucked behind the front
+      flippers — not so different from where an elephant calf would look for
+      milk. Calves keep drinking for up to two years, but they start
+      experimenting with seagrass within just weeks of being born, learning
+      to eat solid food while still nursing, much the way any toddler does.
+      In murky water, where they can lose sight of each other in a few
+      inches, mother and calf keep track of one another by squeaking and
+      chirping constantly — a running conversation that never really stops.</p>
+      <p>That two-year bond is close and constant: calves stay with their
+      mothers the whole time, learning the migration routes, the feeding
+      grounds, and the warm-water refuges they'll rely on for the rest of
+      their lives. It's also exactly why manatee mothers usually only have a
+      new calf every two to five years — raising one properly is close to a
+      full-time job.</p>
+      <span class="credit" style="text-align:center; display:block;">Photos: Wikimedia Commons (public domain)</span>
+    </div>
+  </div>
+
+  <div class="section-break">
+    <div class="rule">— odd and wonderful —</div>
+    <p>A handful of facts that don't fit neatly anywhere else, but earn their
+    place regardless:</p>
+  </div>
+
+  <div class="facts-grid">
+    <div class="fact-card">
+      <h4>Three Species, One Nickname</h4>
+      <p>There are three manatee species — the West Indian manatee (which
+      splits into a Florida and an Antillean subspecies), the Amazonian
+      manatee (the smallest, and the only one that never touches salt
+      water), and the West African manatee. All three, plus their more
+      distant cousin the dugong, get called "sea cows" for the unhurried
+      grazing habit. The dugong is the odd one out of the group — a
+      different family entirely, easily told apart by its whale-like fluked
+      tail, versus a manatee's round paddle.</p>
+    </div>
+    <div class="fact-card">
+      <h4>The Gas Nuance</h4>
+      <p>Manatees can hover motionless at almost any depth without paddling,
+      and part of the reason is genuinely a little silly: a high-fibre diet
+      produces a lot of intestinal gas, and holding onto some of it in gut
+      pouches adds useful lift. That said, the serious engineering behind it
+      is a nearly full-body diaphragm and unusually dense, heavy ribs that
+      work like adjustable ballast — the gas is real, but it's the supporting
+      act, not the headliner.</p>
+    </div>
+    <div class="fact-card">
+      <h4>Feel the Cold</h4>
+      <p>Manatees carry very little body fat and can't tolerate water much
+      below about 68°F (20°C) — prolonged cold exposure can cause a genuinely
+      dangerous condition called cold stress syndrome. Every winter, Florida's
+      manatees migrate to natural springs and warm-water outflows to sit the
+      season out, which is why so many of the best manatee-watching spots are
+      built around a spring or a power station.</p>
+    </div>
+    <div class="fact-card">
+      <h4>The Original Mermaid</h4>
+      <p>One of the earliest written mermaid sightings is often traced to
+      Christopher Columbus's 1493 journal, describing three "mermaids" off
+      the coast of Hispaniola that were, in his words, not half as beautiful
+      as they're painted — almost certainly manatees, seen at a distance by
+      someone who'd been at sea a very long time.</p>
+    </div>
+  </div>
+
+  <footer>facts checked against current marine-biology research and Mote Marine Laboratory findings, August 2026 — made for anyone who thinks manatees deserve a page like this (they do)</footer>
+</div>
+
+</body>
+</html>
