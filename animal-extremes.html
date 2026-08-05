@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Beastly Extremes</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;500&display=swap');
+
+  body {
+    background: #0f1115;
+    color: #d4d7dc;
+    font-family: 'Inter', -apple-system, Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 0 0 80px;
+  }
+  .hero {
+    text-align: center;
+    padding: 70px 20px 30px;
+    background:
+      radial-gradient(ellipse at 25% 0%, rgba(255,106,61,0.18), transparent 60%),
+      radial-gradient(ellipse at 75% 0%, rgba(60,140,255,0.14), transparent 60%),
+      #101216;
+    border-bottom: 2px solid #22252c;
+  }
+  h1 {
+    font-family: 'Oswald', Impact, sans-serif;
+    font-weight: 700;
+    font-size: 3.2em;
+    letter-spacing: 3px;
+    margin: 0;
+    color: #f1f2f4;
+    text-transform: uppercase;
+  }
+  .subtitle {
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    color: #8a8f99;
+    margin-top: 12px;
+    font-size: 0.95em;
+    letter-spacing: 0.5px;
+  }
+  .container { max-width: 900px; margin: 0 auto; padding: 0 22px; }
+  .intro {
+    max-width: 720px;
+    margin: 40px auto 10px;
+    font-size: 1.1em;
+    color: #b8bcc4;
+    line-height: 1.75;
+    border-left: 3px solid #ff6a3d;
+    padding-left: 20px;
+  }
+  .axis { margin: 66px 0; }
+  .axis-label {
+    text-align: center;
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 5px;
+    font-size: 0.82em;
+    color: #6b7280;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .axis-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .panel {
+    background: #14161c;
+    border: 1px solid #262a33;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 8px 26px rgba(0,0,0,0.45);
+  }
+  .panel img {
+    width: 100%;
+    display: block;
+  }
+  .panel .cap { padding: 20px 22px 24px; }
+  .rank {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.76em;
+    letter-spacing: 2px;
+    padding: 3px 10px;
+    border-radius: 3px;
+    margin-bottom: 14px;
+  }
+  .rank.hi {
+    color: #ff8a63;
+    background: rgba(255,106,61,0.1);
+    border: 1px solid rgba(255,106,61,0.3);
+  }
+  .rank.lo {
+    color: #6ea0ff;
+    background: rgba(60,140,255,0.1);
+    border: 1px solid rgba(60,140,255,0.3);
+  }
+  .panel h3 {
+    margin: 0 0 4px;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    letter-spacing: 1px;
+    font-size: 1.3em;
+    color: #f1f2f4;
+    text-transform: uppercase;
+  }
+  .model {
+    font-size: 0.9em;
+    color: #8a8f99;
+    margin-bottom: 14px;
+    font-style: italic;
+  }
+  .stat {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin: 14px 0 6px;
+    padding: 10px 14px;
+    background: #0f1115;
+    border-radius: 4px;
+    border: 1px solid #22252c;
+  }
+  .stat .num {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    font-size: 1.5em;
+  }
+  .stat.hi .num { color: #ff8a63; }
+  .stat.lo .num { color: #6ea0ff; }
+  .stat .unit {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78em;
+    color: #8a8f99;
+    letter-spacing: 1px;
+  }
+  .source {
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7em;
+    color: #565b66;
+    letter-spacing: 0.5px;
+    margin: 8px 0 16px;
+  }
+  .panel p {
+    margin: 0 0 12px;
+    line-height: 1.75;
+    color: #c0c4cc;
+    font-size: 0.94em;
+  }
+  .panel p:last-of-type { margin-bottom: 0; }
+  .section-break {
+    margin: 70px 0 30px;
+    text-align: center;
+  }
+  .section-break .rule {
+    color: #565b66;
+    letter-spacing: 5px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8em;
+    text-transform: uppercase;
+  }
+  .section-break p {
+    max-width: 560px;
+    margin: 16px auto 0;
+    color: #9a9fa8;
+    line-height: 1.7;
+    font-size: 0.98em;
+  }
+  .grid {
+    max-width: 720px;
+    margin: 0 auto 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+  }
+  .mini-card {
+    background: #14161c;
+    border: 1px solid #262a33;
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .mini-card img { width: 100%; display: block; }
+  .mini-card .cap { padding: 14px 16px 18px; }
+  .mini-card h4 {
+    margin: 0 0 6px;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    font-size: 1.05em;
+    color: #e8e9ec;
+  }
+  .mini-card p {
+    margin: 0;
+    font-size: 0.86em;
+    line-height: 1.55;
+    color: #9a9fa8;
+  }
+  footer {
+    text-align: center;
+    margin-top: 60px;
+    color: #565b66;
+    font-size: 0.8em;
+    letter-spacing: 0.5px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  @media (max-width: 640px) {
+    h1 { font-size: 2.2em; }
+    .axis-pair { grid-template-columns: 1fr; }
+    .grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <h1>Beastly Extremes</h1>
+  <div class="subtitle">twelve records, six axes, one rule for all of them</div>
+</div>
+
+<div class="container">
+
+  <p class="intro">
+    The rule is simple: it has to be a real, documented species — extinct or
+    living, verified by actual science. Not a cryptid, not folklore, not an
+    internet hoax someone dressed up with a blurry photo. Where a record is
+    genuinely disputed between two legitimate contenders, this page says so
+    rather than picking a winner and hiding the argument. Twelve records,
+    twelve real animals, arranged in six axes — because every extreme is more
+    interesting standing right next to its opposite.
+  </p>
+
+  <div class="axis">
+    <div class="axis-label">— speed —</div>
+    <div class="axis-pair">
+
+      <div class="panel">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Peregrine_Falcon_(male)_cropped.jpg" alt="Peregrine falcon">
+        <div class="cap">
+          <span class="rank hi">FASTEST</span>
+          <h3>Peregrine Falcon</h3>
+          <div class="model">Falco peregrinus, worldwide</div>
+          <div class="stat hi"><span class="num">242</span><span class="unit">MPH DIVE, VERIFIED</span></div>
+          <span class="source">— Ken Franklin falconry trial, 1999 / Guinness World Records (photo: Wikimedia Commons)</span>
+          <p>In 1999, a captive-bred falcon named Frightful was released from a
+          Cessna at 17,000 feet and clocked at 242mph in a hunting stoop — the
+          fastest speed ever recorded for any animal, in air, on land, or in
+          water. Wild birds get tracked well over 200mph doing the same
+          thing: folding into a teardrop and dropping like a dead weight onto
+          whatever's flying underneath them.</p>
+        </div>
+      </div>
+
+      <div class="panel">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Cornu_aspersum_locomotion_IMG_3693.jpg" alt="Garden snail in motion">
+        <div class="cap">
+          <span class="rank lo">SLOWEST</span>
+          <h3>Garden Snail</h3>
+          <div class="model">Cornu aspersum, worldwide</div>
+          <div class="stat lo"><span class="num">0.03</span><span class="unit">MPH TOP SPEED</span></div>
+          <span class="source">— standard invertebrate locomotion studies (photo: Wikimedia Commons)</span>
+          <p>About 1.3cm a second, riding a trail of its own mucus. The
+          three-toed sloth is who people actually picture when they think
+          "slow" — and it is the slowest mammal alive, at 0.15mph. But
+          measured plainly, the garden snail is nearly five times slower
+          again. Slowness, it turns out, doesn't need a face people find
+          endearing.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="axis">
+    <div class="axis-label">— size —</div>
+    <div class="axis-pair">
+
+      <div class="panel">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Blue_Whale_001_noaa_body_color.jpg" alt="Blue whale">
+        <div class="cap">
+          <span class="rank hi">BIGGEST</span>
+          <h3>Blue Whale</h3>
+          <div class="model">Balaenoptera musculus, all oceans</div>
+          <div class="stat hi"><span class="num">30m</span><span class="unit">LONG, ~200 TONS</span></div>
+          <span class="source">— NOAA Fisheries (photo: Wikimedia Commons)</span>
+          <p>The largest animal confirmed to have ever lived — bigger than
+          every dinosaur, including the long-necked giants that usually top
+          these lists. Its heart alone weighs about as much as a small car,
+          and a newborn calf gains roughly 90kg a day on milk.</p>
+          <p>Even this crown has a live challenger: in 2023, paleontologists
+          described <em>Perucetus colossus</em>, an extinct whale known only
+          from partial 39-million-year-old bones in Peru, estimated at up to
+          340 tons — heavier than any blue whale on record, though likely
+          shorter. Genuinely unresolved. The blue whale keeps the title until
+          someone finds the rest of the skeleton.</p>
+        </div>
+      </div>
+
+      <div class="panel">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Suncus_etruscus.jpg" alt="Etruscan shrew on a human hand for scale">
+        <div class="cap">
+          <span class="rank lo">SMALLEST</span>
+          <h3>Etruscan Shrew</h3>
+          <div class="model">Suncus etruscus, Old World</div>
+          <div class="stat lo"><span class="num">1.8g</span><span class="unit">AVERAGE ADULT WEIGHT</span></div>
+          <span class="source">— comparative mammalogy literature (photo: Wikimedia Commons)</span>
+          <p>Lighter than a small coin, with a heart that beats over 1,500
+          times a minute just to keep its metabolism running. It has to eat
+          close to twice its own body weight in insects every day or it
+          starves by nightfall. Footnote: Kitti's hog-nosed bat is shorter
+          nose-to-tail, so "smallest mammal" splits depending whether you're
+          measuring length or mass — the shrew wins on weight, the bat on
+          length.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="axis">
+    <div class="axis-label">— lifespan —</div>
+    <div class="axis-pair">
+
+      <div class="panel">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Greenland_shark_profile.jpg" alt="Greenland shark">
+        <div class="cap">
+          <span class="rank hi">LONGEST-LIVED</span>
+          <h3>Greenland Shark</h3>
+          <div class="model">Somniosus microcephalus, North Atlantic &amp; Arctic</div>
+          <div class="stat hi"><span class="num">~392</span><span class="unit">YEARS, RADIOCARBON-DATED</span></div>
+          <span class="source">— Nielsen et al., Science, 2016 (photo: Wikimedia Commons)</span>
+          <p>A 2016 study radiocarbon-dated the eye lens of a captured female
+          Greenland shark to roughly 392 years old, give or take 120 — meaning
+          she was most likely alive before the microscope was invented. It's
+          the oldest confirmed age for any vertebrate on Earth, and the
+          species isn't thought to reach sexual maturity until around 150.</p>
+          <p>The "immortal jellyfish" doesn't belong on this list, tempting as
+          it is — it doesn't grow old and outlast everything else, it
+          resets, reverting to a juvenile polyp under stress. Different trick
+          entirely; it's not clear it "lives" centuries so much as it
+          declines to stop starting over.</p>
+        </div>
+      </div>
+
+      <div class="panel">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Ephemera_simulans_male.jpg" alt="Adult mayfly">
+        <div class="cap">
+          <span class="rank lo">SHORTEST-LIVED</span>
+          <h3>Sand-Burrowing Mayfly</h3>
+          <div class="model">Dolania americana, eastern North America</div>
+          <div class="stat lo"><span class="num">&lt;5</span><span class="unit">MINUTES, ADULT FEMALE</span></div>
+          <span class="source">— aquatic entomology field studies (photo: Wikimedia Commons)</span>
+          <p>Adult mayflies have no working mouthparts — the entire adult
+          stage exists to mate and die. Males of this species survive under
+          an hour once they take wing; females get as little as five minutes
+          to find a mate before they're gone. The twist: they spend up to two
+          years as nymphs on the riverbed first. The lifespan isn't short.
+          The party at the end just is.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="axis">
+    <div class="axis-label">— sound —</div>
+    <div class="axis-pair">
+
+      <div class="panel">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Day_4_-_Sperm_Whale_(7928622358).jpg" alt="Sperm whale">
+        <div class="cap">
+          <span class="rank hi">LOUDEST</span>
+          <h3>Sperm Whale</h3>
+          <div class="model">Physeter macrocephalus, all oceans</div>
+          <div class="stat hi"><span class="num">~230</span><span class="unit">DECIBELS (CLICK, SPL)</span></div>
+          <span class="source">— marine bioacoustics research (photo: Wikimedia Commons)</span>
+          <p>Sperm whale echolocation clicks have been measured above 230
+          decibels — louder than any other sound produced by a living thing,
+          and loud enough to stun prey outright at close range. For scale, a
+          jet engine at close range is around 150dB; human eardrums rupture
+          near 160.</p>
+          <p>Pistol shrimp are the mechanical runner-up: the snap of a single
+          claw creates a collapsing bubble, cavitation, that hits roughly
+          210dB — a physical snap rather than a vocal sound, which is why
+          it's judged in its own category rather than beating the whale
+          outright.</p>
+        </div>
+      </div>
+
+      <div class="panel">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Barn_Owl_flying.jpg" alt="Barn owl in flight">
+        <div class="cap">
+          <span class="rank lo">QUIETEST</span>
+          <h3>Barn Owl</h3>
+          <div class="model">Tyto alba, worldwide except polar &amp; deep desert regions</div>
+          <div class="stat lo"><span class="num">Silent</span><span class="unit">IN FLIGHT — NO dB RECORD EXISTS</span></div>
+          <span class="source">— comparative flight-acoustics research (photo: Wikimedia Commons)</span>
+          <p>Not a decibel record like the whale's opposite number — a
+          structural one instead. Serrated leading-edge feathers and a soft,
+          velvety upper wing surface break up airflow before it can build
+          into the whooshing sound every other bird makes in flight. The
+          result is functionally silent flight, evolved for exactly one
+          reason: so prey never hears the strike coming.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="axis">
+    <div class="axis-label">— sleep —</div>
+    <div class="axis-pair">
+
+      <div class="panel">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Myotis_lucifugus_little_brown_bat.jpg" alt="Little brown bat">
+        <div class="cap">
+          <span class="rank hi">SLEEPS MOST</span>
+          <h3>Little Brown Bat</h3>
+          <div class="model">Myotis lucifugus, North America</div>
+          <div class="stat hi"><span class="num">19.9</span><span class="unit">HOURS/DAY, EEG-CONFIRMED</span></div>
+          <span class="source">— comparative sleep research (photo: Wikimedia Commons)</span>
+          <p>Under actual EEG monitoring, not just time spent motionless, the
+          little brown bat racks up more confirmed sleep than any other
+          mammal studied: just under 20 hours a day, leaving under five for
+          flying, hunting, and everything else. Koalas get cited more often
+          for this title, at a claimed 18–22 hours, but a lot of that is
+          torpor-like inactivity rather than measured sleep — softer
+          science, better publicity.</p>
+        </div>
+      </div>
+
+      <div class="panel">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/African_Bush_Elephant.jpg" alt="African bush elephant">
+        <div class="cap">
+          <span class="rank lo">SLEEPS LEAST</span>
+          <h3>African Bush Elephant</h3>
+          <div class="model">Loxodonta africana, sub-Saharan Africa</div>
+          <div class="stat lo"><span class="num">~2</span><span class="unit">HOURS/DAY, WILD, TRACKED</span></div>
+          <span class="source">— Gravett et al., PLOS ONE, 2017 (photo: Wikimedia Commons)</span>
+          <p>A 2017 study fitted actiwatches to wild elephant matriarchs in
+          Botswana's Chobe National Park and found they slept as little as
+          two hours a day, in four or five short standing bursts — less than
+          any other mammal ever tracked in the wild. On at least one
+          occasion, a tracked elephant went 46 hours with no sleep at all,
+          covering nearly 30km, likely to avoid a threat.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="axis">
+    <div class="axis-label">— population —</div>
+    <div class="axis-pair">
+
+      <div class="panel">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Leafcutter_ants_transporting_leaves.jpg" alt="Leafcutter ants">
+        <div class="cap">
+          <span class="rank hi">MOST NUMEROUS</span>
+          <h3>Ants</h3>
+          <div class="model">Formicidae, every continent except Antarctica</div>
+          <div class="stat hi"><span class="num">~20</span><span class="unit">QUADRILLION INDIVIDUALS</span></div>
+          <span class="source">— Schultheiss et al., PNAS, 2022 (photo: Wikimedia Commons)</span>
+          <p>A 2022 meta-analysis of 489 separate studies put the global ant
+          population at roughly 20 quadrillion — about 2.5 million ants for
+          every human alive — with a combined biomass greater than all wild
+          birds and mammals on Earth put together. The researchers considered
+          it a conservative floor; it barely accounts for ants living
+          underground.</p>
+        </div>
+      </div>
+
+      <div class="panel">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Vaquita4_Olson_NOAA.jpg" alt="Vaquita porpoise">
+        <div class="cap">
+          <span class="rank lo">RAREST</span>
+          <h3>Vaquita</h3>
+          <div class="model">Phocoena sinus, northern Gulf of California only</div>
+          <div class="stat lo"><span class="num">7–10</span><span class="unit">INDIVIDUALS LEFT, 2026 SURVEY</span></div>
+          <span class="source">— IUCN / CIRVA 2026 acoustic &amp; visual survey (photo: Wikimedia Commons)</span>
+          <p>The world's smallest and rarest marine mammal, found nowhere but
+          a single corner of the Gulf of California. The population has
+          collapsed from roughly 567 in 1997 to somewhere between 7 and 10
+          individuals in the latest 2026 survey — a 98% decline in under
+          thirty years, almost entirely to illegal gillnet fishing. The
+          survey also recorded one or two calves, which is the only reason
+          this entry isn't written in the past tense.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="section-break">
+    <div class="rule">— honourable mentions —</div>
+    <p>And for the famous animals that were never going to pass the "real,
+    documented species" test no matter how hard we looked — rendered as if a
+    nature documentary crew actually found them:</p>
+  </div>
+
+  <div class="grid">
+    <div class="mini-card">
+      <img src="img/animal-extremes/01_kong.jpg" alt="Photorealistic render of King Kong atop a skyscraper">
+      <div class="cap">
+        <h4>King Kong</h4>
+        <p>A twenty-five-foot gorilla with a taste for aircraft and a worse
+        one for skyscrapers. Disqualified on the "documented species"
+        clause — also the "exists" one.</p>
+      </div>
+    </div>
+    <div class="mini-card">
+      <img src="img/animal-extremes/02_godzilla.jpg" alt="Photorealistic render of Godzilla emerging from the ocean">
+      <div class="cap">
+        <h4>Godzilla</h4>
+        <p>Two hundred feet of irradiated reptile, allergic to Tokyo. The
+        most-filmed animal that was never once real.</p>
+      </div>
+    </div>
+    <div class="mini-card">
+      <img src="img/animal-extremes/03_dumbo.jpg" alt="Photorealistic render of Dumbo flying">
+      <div class="cap">
+        <h4>Dumbo</h4>
+        <p>An elephant calf who solved flight with ears alone.
+        Aerodynamically nonsense; emotionally undefeated.</p>
+      </div>
+    </div>
+    <div class="mini-card">
+      <img src="img/animal-extremes/04_clifford.jpg" alt="Photorealistic render of Clifford the Big Red Dog">
+      <div class="cap">
+        <h4>Clifford the Big Red Dog</h4>
+        <p>A dog the size of a house, in a town that never once questions
+        it. Best-behaved animal on this entire page.</p>
+      </div>
+    </div>
+    <div class="mini-card">
+      <img src="img/animal-extremes/05_nessie.jpg" alt="Photorealistic render of the Loch Ness Monster">
+      <div class="cap">
+        <h4>The Loch Ness Monster</h4>
+        <p>Ninety years of blurry photographs and zero specimens — the
+        honourable mention that exists specifically to fail this page's own
+        rule.</p>
+      </div>
+    </div>
+    <div class="mini-card">
+      <img src="img/animal-extremes/06_grogu.jpg" alt="Photorealistic render of Grogu">
+      <div class="cap">
+        <h4>Grogu ("Baby Yoda")</h4>
+        <p>Fifty years old, drinks bone broth, moves objects with his mind.
+        Not a documented species by any definition, but nobody's arguing.</p>
+      </div>
+    </div>
+  </div>
+
+  <footer>facts checked against current research literature, August 2026 — subject to whoever finds the next fossil, the next vaquita calf, or the next reason a jellyfish shouldn't count</footer>
+</div>
+
+</body>
+</html>
